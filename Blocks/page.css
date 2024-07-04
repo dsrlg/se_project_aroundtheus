@@ -1,0 +1,19 @@
+.page {
+    background-color: black;
+    color: white;
+    margin: 0 auto;
+    max-width: 880px;
+  }
+  .page__section {
+    max-width: 880px;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: content-box;
+  }
+  .page__content {
+    display: flex;
+    flex-direction: column;
+    max-width: 880px;
+    padding: 0 20px;
+  }

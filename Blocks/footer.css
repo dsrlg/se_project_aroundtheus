@@ -1,0 +1,16 @@
+.footer__logo {
+    width: 318px;
+    height: 18px;
+    top: 67px;
+    left: 200px;
+    right: 762px;
+    bottom: 60px;
+    color: #545454;
+    margin: 0 auto;
+    font-family: "inter", Arial, Helvetica, sans-serif;
+  }
+  .footer{
+    margin-bottom: 60px;
+    margin-right: 562px;
+    margin-top: 67px;
+  }

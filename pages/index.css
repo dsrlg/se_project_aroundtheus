@@ -1,190 +1,85 @@
-.page {
-  background-color: black;
-  color: white;
-  margin: 0 auto;
-  max-width: 880px;
-}
-.page__section {
-  max-width: 880px;
-  position: relative;
-  margin: 0 auto;
-  width: 100%;
-  box-sizing: content-box;
-}
-.page__content {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  max-width: 880px;
-}
-.header {
-  max-width: 880px;
-  margin-top: 45px;
-}
-.profile {
-  display: flex;
-  align-items: center;
-  padding-top: 40px;
-  max-width: 880px;
-}
-.profile__info {
-  display: grid;
-  grid-template-areas:
-    "title button"
-    " description description";
-  grid-template-columns: minmax(auto, 373px) auto;
-}
-.profile__editbutton {
-  background: transparent url(../images/edit\ button.svg) center no-repeat;
-  height: 24px;
-  width: 24px;
-  grid-area: button;
-}
-.profile__add-button {
-  background: transparent url(../images/Add\ button\ .svg) center no-repeat;
-  width: 150px;
-  height: 50px;
-  margin-left: auto;
-}
-.profile__title {
-  font-size: 42px;
-  line-height: 1.1;
-  font-weight: 500;
-  grid-area: title;
-  margin: 0;
-}
-.profile__description {
-  font-size: 18px;
-  line-height: 1.2;
-  font-weight: 400;
-  grid-area: description;
-  margin: 0;
-  max-width: 373px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.profile__image {
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  background-position: center;
-  margin-right: 24px;
-}
-.cards {
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  margin-top: 30px;
-  margin-bottom: 67px;
-  font-family: "inter", Arial, sans-serif;
-  padding: 15px 0 36px;
-}
-/*.card{
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    border-radius: 10px;
-}*/
-.card__image {
-  width: 282px;
-  height: 282px;
-}
-.card__list {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, 282px);
-  grid-gap: 20px 17px;
-  padding: 0;
-  margin: 0;
-}
-.card__title {
-  max-width: 220px;
-  font-size: 24px;
-  font-weight: 900;
-  line-height: 1.2;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  margin: 0;
-  white-space: nowrap;
-}
-.card__description {
-  display: flex;
-  background-color: white;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  padding-left: 20px;
-  padding-right: 20px;
-  align-items: center;
-  justify-content: space-between;
-  color: black;
-  border-radius: 10px;
-}
-.card__like-button {
-  background: transparent url(../images/Like-button.svg) center no-repeat;
-  height: 18px;
-  width: 21px;
-}
-.footer__logo {
-  width: 318px;
-  height: 18px;
-  top: 67px;
-  left: 200px;
-  right: 762px;
-  bottom: 60px;
-  color: #545454;
-  margin: 0 auto;
-}
-@media screen and (max-width: 1100px) {
-  .header .page__section {
-    max-width: 880px;
-    height: 74px;
-    margin-top: 45px;
-    margin-left: 200px;
-    margin-right: 200px;
-    
-  }
-  .page__section {
-    margin: 0 20px;
-    margin: 0px 20px;
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: nowrap;
-  }
-}
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/fonts.css);
+@import url(../Blocks/page.css);
+@import url(../Blocks/header.css);
+@import url(../Blocks/profile.css);
+@import url(../Blocks/cards.css);
+@import url(../Blocks/card.css);
+@import url(../Blocks/footer.css);
+
 @media screen and (max-width: 621px) {
-  .profile__description {
-    width: 100%;
-    font-size: 14px;
-    line-height: 1.2;
-  }
-}
-@media screen and (max-width: 480px) {
-  .header .page__section {
-    width: 100%;
-    height: auto;
+  .header page__section {
     margin-top: 28px;
-   max-width: 320px;
-    height: 56px;
-    margin:0 auto;
+    margin-left: 27px;
+    margin-right: 167px;
   }
+  .header__logo {
+    max-width: 128px;
+    height: 24px;
+  }
+
   .profile {
     flex-direction: column;
+    row-gap: 30px;
+  }
+  .profile__image {
+    width: 120px;
+    height: 120px;
+    top: 126px;
+    left: 101px;
+    gap: 0px;
+    opacity: 0px;
   }
   .profile__info {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    padding-left: 62px;
-    padding-right: 62px;
     justify-content: center;
+    row-gap: 10px;
+    box-sizing: border-box;
+  }
+  .profile__title {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 26.63px;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .profile__editbutton {
+    gap: 0px;
+    opacity: 0px;
+    gap: 5.25px;
+    border: 1px solid #fff;
+    width: 18px;
+    height: 18px;
+  }
+  .profile__description {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.94px;
+    text-align: center;
+    width: 282px;
+    height: 14px;
+    top: 312px;
+    left: 19px;
+    gap: 0px;
+    opacity: 0px;
   }
   .profile__add-button {
     margin: 0;
-    width: 100%;
+    width: 282px;
+    height: 50px;
+    top: 362px;
+    left: 19px;
+    right: 19px;
+    gap: 0px;
+    opacity: 0px;
+    border: 1px solid #fff;
   }
-  .footer__logo {
+  .footer {
     max-width: 282px;
     height: 14px;
     margin-left: 19px;
