@@ -55,3 +55,67 @@
   background-position: center;
   margin-right: 24px;
 }
+@media screen and (max-width: 621px) {
+  .profile {
+    flex-direction: column;
+    row-gap: 30px;
+  }
+  .profile__image {
+    width: 120px;
+    height: 120px;
+    top: 126px;
+    left: 101px;
+    gap: 0px;
+    opacity: 0px;
+  }
+  .profile__info {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    row-gap: 10px;
+    box-sizing: border-box;
+  }
+  .profile__title {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 26.63px;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .profile__editbutton {
+    gap: 0px;
+    opacity: 0px;
+    gap: 5.25px;
+    border: 1px solid #fff;
+    width: 18px;
+    height: 18px;
+  }
+  .profile__description {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.94px;
+    text-align: center;
+    width: 282px;
+    height: 14px;
+    top: 312px;
+    left: 19px;
+    gap: 0px;
+    opacity: 0px;
+  }
+  .profile__add-button {
+    margin: 0;
+    width: 282px;
+    height: 50px;
+    top: 362px;
+    left: 19px;
+    right: 19px;
+    gap: 0px;
+    opacity: 0px;
+    border: 1px solid #fff;
+  }
+}
+
