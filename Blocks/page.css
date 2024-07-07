@@ -11,9 +11,3 @@
     width: 100%;
     box-sizing: content-box;
   }
-  .page__content {
-    display: flex;
-    flex-direction: column;
-    max-width: 880px;
-    padding: 0 20px;
-  }

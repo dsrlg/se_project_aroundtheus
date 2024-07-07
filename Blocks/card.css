@@ -1,7 +1,7 @@
-
 .card__image {
   width: 282px;
   height: 282px;
+  display: block;
 }
 .card__title {
   max-width: 220px;
@@ -24,11 +24,16 @@
   align-items: center;
   justify-content: space-between;
   color: black;
-  border-radius: 10px;
+  border-radius: 0 0 10px 10px;
 }
 .card__like-button {
-  background: transparent url(../images/Like-button.svg) center no-repeat;
+  background: transparent url(../images/likebutton.svg) center no-repeat;
   height: 18px;
   width: 21px;
   border: none;
+  cursor: pointer;
+}
+.card__like-button:hover{
+  opacity: 0.5;
+  cursor: pointer;
 }

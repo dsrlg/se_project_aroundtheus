@@ -1,25 +1,19 @@
 .header {
-    display: flex;
-    max-width: 880px;
-    margin-top: 45px;
-    border-bottom: 1px solid;
-    column-gap: 41px;
+  display: flex;
+  max-width: 880px;
+  margin-top: 45px;
+  border-bottom: 1px solid #545454;
+  column-gap: 41px;
+  height: 74px;
+}
+.header__logo {
+  width: 173px;
+  height: 33px;
+  padding-bottom: 41px;
+}
+@media screen and (max-width: 621px) {
+  .header__logo {
+    max-width: 128px;
+    height: 24px;
   }
-  .header__logo{
-    top:45px;
-    width: 173px;
-    height: 33px;
-    padding-bottom: 41px;
-    }
-    @media screen and (max-width: 621px){
-      .header page__section {
-        margin-top: 28px;
-        margin-left: 27px;
-        margin-right: 167px;
-      }
-      .header__logo {
-        max-width: 128px;
-        height: 24px;
-      }
-    }
-  
+}
