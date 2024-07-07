@@ -1,25 +1,24 @@
 # Project 3: Around The U.S.
-
+## Project name
+    Around the U.S.
 ### Overview  
-
-* Intro  
-* Figma  
-* Images  
   
 **Intro**
   
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
-  
-**Figma**  
-  
+This project is about Jacques cousteau who is an explorer and travelled around the US.. This webpage showcasing different places he travelled.
+And it has a functionality for users to like the scenaries.
+
+ **Tecnologies** 
+ It contanis Html5 and css and abale to support reactive functionalities. The project is hosted by the git which you can share with other developers. And this project is formatted and well structured using prettier.
+**Figma** 
 * [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)  
   
 **Images**  
   
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
+![mobile design](image.png)  ![desktop design](image-1.png)
   
-Good luck and have fun!
-
+**Github link**
+https://github.com/dsrlg/se_project_aroundtheus
 
 **Video**
 
