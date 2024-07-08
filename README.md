@@ -20,6 +20,9 @@ And it has a functionality for users to like the scenaries.
 **Github link**
 https://github.com/dsrlg/se_project_aroundtheus
 
+**Github docs**
+https://dsrlg.github.io/se_project_aroundtheus/index.html
+
 **Video**
 
 https://www.loom.com/share/9ebec823332246ed8109c3e4ca9f63af
