@@ -2,18 +2,23 @@
   display: flex;
   max-width: 880px;
   margin-top: 45px;
-  border-bottom: 1px solid #545454;
-  column-gap: 41px;
-  height: 74px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.6);
+  min-height: 74px;
 }
 .header__logo {
   width: 173px;
   height: 33px;
-  padding-bottom: 41px;
+  padding-bottom: 20px;
 }
 @media screen and (max-width: 621px) {
   .header__logo {
     max-width: 128px;
     height: 24px;
+    opacity: 0px;
+  }
+  .header {
+    column-gap: 41px;
+    padding: 28px 167px 0 27px;
+    margin: 0;
   }
 }
