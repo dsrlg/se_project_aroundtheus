@@ -3,6 +3,7 @@
   max-width: 880px;
   margin-top: 45px;
   border-bottom: 1px solid rgba(84, 84, 84, 0.6);
+  opacity: 0.7;
   min-height: 74px;
 }
 .header__logo {
@@ -14,7 +15,6 @@
   .header__logo {
     max-width: 128px;
     height: 24px;
-    opacity: 0px;
   }
   .header {
     column-gap: 41px;
