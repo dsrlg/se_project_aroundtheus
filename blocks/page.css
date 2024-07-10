@@ -1,13 +1,13 @@
 .page {
-    background-color: black;
-    color: white;
-    margin: 0 auto;
-    max-width: 880px;
-  }
-  .page__section {
-    max-width: 880px;
-    position: relative;
-    margin: 0 auto;
-    width: 100%;
-    box-sizing: content-box;
-  }
+  background-color: black;
+  color: white;
+  margin: 0 auto;
+  max-width: 880px;
+}
+.page__section {
+  max-width: 880px;
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: content-box;
+}
