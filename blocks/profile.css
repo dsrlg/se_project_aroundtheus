@@ -12,6 +12,7 @@
     " description description";
   column-gap: 18px;
   align-items: baseline;
+  row-gap: 10px;
 }
 .profile__editbutton {
   background: transparent url(../images/edit\ button.svg) center no-repeat;
@@ -21,6 +22,8 @@
   border: 1px solid #ffffff;
   margin-right: 20px;
   cursor: pointer;
+  align-items: center;
+  gap:10px;
 }
 .profile__editbutton:hover {
   transition: 0.5s;
@@ -78,6 +81,7 @@
   .profile {
     flex-direction: column;
     row-gap: 30px;
+    text-align: center;
   }
   .profile__image {
     margin: 0;
@@ -85,8 +89,9 @@
   .profile__info {
     flex-wrap: wrap;
     width: 100%;
-    row-gap: 10px;
+    gap: 10px;
     box-sizing: border-box;
+    align-items: center;
   }
   .profile__title {
     line-height: 26.63px;
@@ -103,10 +108,10 @@
     font-family: "Inter", Arial, Helvetica, sans-serif;
     font-size: 14px;
     line-height: 16.94px;
-    text-align: center;
+    align-items: center;
     max-width: 282px;
     gap: 0px;
-    justify-content: center;
+    text-align: center;
   }
   .profile__add-button {
     margin: 0;
