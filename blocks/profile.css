@@ -12,7 +12,6 @@
     " description description";
   column-gap: 18px;
   align-items: baseline;
-  row-gap: 10px;
 }
 .profile__editbutton {
   background: transparent url(../images/edit\ button.svg) center no-repeat;
@@ -20,7 +19,6 @@
   width: 24px;
   grid-area: button;
   border: 1px solid #ffffff;
-  margin-right: 20px;
   cursor: pointer;
   align-items: center;
   gap:10px;
@@ -91,6 +89,9 @@
     width: 100%;
     gap: 10px;
     box-sizing: border-box;
+    justify-content: center;
+    max-width: 282px;
+    display: flex;
     align-items: center;
   }
   .profile__title {
@@ -98,7 +99,6 @@
     overflow: hidden;
     font-size: 22px;
     max-width: 196px;
-    padding-left: 62px;
   }
   .profile__editbutton {
     width: 18px;
