@@ -13,15 +13,16 @@
   color: black;
   justify-content: center;
 }
-modal__heading {
+.modal__heading {
   width: 100%;
   height: 23px;
   color: black;
-  padding-bottom: 30px;
+  margin:0;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 24px;
   font-weight: 900;
   text-align: left;
+
 }
 .modal__container {
   background-color: #fff;
@@ -31,15 +32,19 @@ modal__heading {
   position: relative;
   max-width: 282px;
   width: 430px;
-  height: 330px;
+  box-sizing: border-box;
+}
+.modal__input-container{
+    display: flex;
+    flex-direction: column;
+    gap:30px;
 }
 .modal__close {
-  background-image: url("../images/Close.svg");
+    background: transparent url("../images/close.svg") center no-repeat;
   border: none;
-  background-color: transparent;
-  max-width: 40px;
-  height: 40px;
-  background-repeat: no-repeat;
+  width: 35px;
+  height: 35px;
+  background-size: 35px 35px;
   background-size: cover;
   block-size: contain;
   cursor: pointer;
@@ -55,14 +60,15 @@ modal__heading {
 .modal__form {
   display: flex;
   flex-direction: column;
-  gap: 54px;
+  gap: 45px;
   border: 0px;
-  margin-top: 54px;
-  border-bottom: 1px solid rgba(0, 0, 0, 1);
+  margin-top: 75px;
+
 }
 .modal__input {
   border: 0px;
   border-bottom: 1px solid rgba(0, 0, 0, 1);
+  padding-bottom: 13px;
 }
 .modal__button {
   width: 100%;
@@ -88,7 +94,7 @@ modal__heading {
     top: 123px;
   }
   .modal__container {
-    padding: 12px 12px;
+    padding: 25px 22px;
     margin-top: 123px;
     margin-left: 19px;
     margin-right: 19px;
@@ -114,9 +120,10 @@ modal__heading {
     bottom: calc(100%);
     left: 264px;
   }
-  .modal_opened {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.3s;
-  }
 }
+.modal_closed {
+    display: none;
+  }
+  .modal_opened {
+    display: block;
+  }  
