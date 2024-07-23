@@ -62,12 +62,17 @@
   border: 0px;
   margin-top: 54px;
 }
+/*.modal__input-container{
+  opacity:20%;
+}*/
 .modal__input {
   border: 0px;
-  border-bottom: 2px solid rgba(0, 0, 0, 1);
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
+ font-size: 14px;
   padding-bottom: 13px;
   line-height: 14px;
   width: 100%;
+  gap:30px;
 }
 .modal__button {
   width: 100%;
