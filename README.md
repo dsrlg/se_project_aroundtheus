@@ -16,6 +16,8 @@ And it has a functionality for users to like the scenaries.
 **Images**  
   
 ![mobile design](image.png)  ![desktop design](image-1.png)
+
+![Edit form ](image-2.png)
   
 **Github link**
 https://github.com/dsrlg/se_project_aroundtheus
