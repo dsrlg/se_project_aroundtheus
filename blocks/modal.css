@@ -60,7 +60,7 @@
   flex-direction: column;
   gap: 48px;
   border: 0px;
-  margin-top: 75px;
+  margin-top: 54px;
 }
 .modal__input {
   border: 0px;
@@ -68,7 +68,6 @@
   padding-bottom: 13px;
   line-height: 14px;
   width: 100%;
-  height: 47px;
 }
 .modal__button {
   width: 100%;
@@ -89,7 +88,6 @@
     padding: 20px;
     left: 50%;
     transform: translateX(-50%);
-    top: 123px;
   }
   .modal__container {
     padding: 25px 22px;
@@ -118,6 +116,9 @@
     height: 26px;
     bottom: calc(100%);
     left: 264px;
+  }
+  .modal__form{
+    margin-top: 75px;
   }
 }
 .modal_closed {
