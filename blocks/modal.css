@@ -12,6 +12,7 @@
   align-items: center;
   color: black;
   justify-content: center;
+  border-radius: 10px;
 }
 .modal__heading {
   width: 100%;
@@ -19,8 +20,9 @@
   color: black;
   margin: 0;
   font-size: 24px;
-  font-weight: 900;
   text-align: left;
+  font-weight: bold;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 .modal__container {
   background-color: #fff;
@@ -46,8 +48,8 @@
   block-size: contain;
   cursor: pointer;
   position: absolute;
-  top: -45px;
-  right: -45px;
+  top: -37px;
+  right: -37px;
   transform: rotateX("45deg");
 }
 .modal__close:hover {
@@ -63,22 +65,25 @@
 }
 .modal__input {
   border: 0px;
-  border-bottom: 1px solid rgba(0, 0, 0, 1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   font-size: 14px;
   padding-bottom: 13px;
   line-height: 14px;
   width: 100%;
   gap: 30px;
   font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
 }
 .modal__button {
   width: 100%;
   background-color: black;
   color: white;
   padding: 10px;
-  font-size: 16px;
+  font-size: 18px;
   border: none;
   cursor: pointer;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
 }
 .modal__button:hover {
   transition: 0.5s;
@@ -86,18 +91,17 @@
 }
 @media (max-width: 621px) {
   .modal {
-    width: 90%;
-    padding: 20px;
+    width: 100%;
+    padding: 10px;
     left: 50%;
     transform: translateX(-50%);
+    margin:10px 0;
+    max-width: 322px;
   }
   .modal__container {
     padding: 25px 22px;
-    margin-top: 123px;
-    margin-left: 19px;
-    margin-right: 19px;
-    margin-bottom: 123px;
     max-width: 282px;
+    margin:0 auto;
   }
   .modal__heading {
     font-size: 18px;
@@ -106,20 +110,21 @@
     width: 100%;
     margin: 10px 0;
     font-size: 14px;
-    font-weight: 400;
     text-align: left;
-    padding-bottom: 9px;
+    padding-bottom: 13px;
   }
   .modal__button {
     text-align: center;
     font-size: 14px;
     height: 46px;
+    width: 100%;
   }
   .modal__close {
     width: 26px;
     height: 26px;
     bottom: calc(100%);
     left: 250px;
+    top:-45px;
   }
   .modal__form {
     margin-top: 75px;
