@@ -78,7 +78,8 @@
   width: 100%;
   background-color: black;
   color: white;
-  padding: 10px;
+  padding-top: 18px;
+    padding-bottom: 18px;
   font-size: 18px;
   border: none;
   cursor: pointer;
@@ -118,6 +119,8 @@
     font-size: 14px;
     height: 46px;
     width: 100%;
+    padding-top: 14px;
+    padding-bottom: 14px;
   }
   .modal__close {
     width: 26px;
@@ -127,7 +130,7 @@
     top:-45px;
   }
   .modal__form {
-    margin-top: 75px;
+    margin-top: 44px;
     gap: 45px;
   }
 }
