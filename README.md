@@ -1,4 +1,4 @@
-# Project 3: Around The U.S.
+# Project 5: Around The U.S.
 ## Project name
     Around the U.S.
 ### Overview  
@@ -20,7 +20,7 @@ And it has a functionality for users to like the scenaries. In this project view
 ![Edit form ](image-2.png)    ![Add form] ![alt text](image.png)
 
 ![Preview Image in Desktop design]      
-!{Preview in 
+![Preview in Mobile design]
   
 **Github link**
 https://github.com/dsrlg/se_project_aroundtheus

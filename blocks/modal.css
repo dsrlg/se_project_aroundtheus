@@ -55,8 +55,10 @@
   block-size: contain;
   cursor: pointer;
   position: absolute;
-  top: -37px;
-  right: -37px;
+  /*top: -37px;
+  right: -37px;*/
+  top: -35px;
+  right: -35px;
   transform: rotateX("45deg");
 }
 .modal__close:hover {
@@ -97,19 +99,19 @@
   transition: 0.5s;
   opacity: 0.6;
 }
-.modal__preview-closebutton {
+/*.modal__preview-closebutton {
   background: transparent url("../images/previewclose.svg") center no-repeat;
   border: none;
   block-size: contain;
   cursor: pointer;
   /*position: absolute;*/
-  transform: rotateX("45deg");
-  width: 30px;
+ /* transform: rotateX("45deg");
+  /*width: 30px;
   height: 30px;
   top: 123px;
   left: 807px;
   opacity: 0px;
-}
+}*/
 .modal__container .card__delete-button {
   display: none;
 }
@@ -143,7 +145,7 @@
     padding: 10px;
     left: 50%;
     transform: translateX(-50%);
-    margin: 10px 0;
+    /*margin: 10px 0;*/
     max-width: 322px;
   }
   .modal__container {
@@ -187,16 +189,16 @@
     opacity: 1;
     visibility: visible;
   }
-  .modal__preview-closebutton {
+  /*.modal__preview-closebutton {
     top: 134px;
     left: 285px;
-  }
-  .preview-modal {
+  }*/
+  /*.preview-modal {
     width: 240px;
     height: 299px;
     top: 136px;
     left: 40px;
     gap: 0px;
     opacity: 0px;
-  }
+  }*/
 }
