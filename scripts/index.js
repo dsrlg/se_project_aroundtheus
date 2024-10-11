@@ -56,7 +56,7 @@ function getcardElement(cardData) {
   const likeButton = cardElement.querySelector(".card__like-button");
   const cardPreviewImage = cardElement.querySelector(".preview__card-image");
   const cardPreviewCloseButton = cardElement.querySelector(
-    ".modal__preview-closebutton"
+    ".modal__close"
   );
   //likeButton.forEach((likeButton) => {
   likeButton.addEventListener("click", () => {

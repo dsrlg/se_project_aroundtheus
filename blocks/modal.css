@@ -59,6 +59,8 @@
   right: -37px;*/
   top: -35px;
   right: -35px;
+  left: 450px;
+    top: -30px
   transform: rotateX("45deg");
 }
 .modal__close:hover {
@@ -137,17 +139,34 @@
   display: flex;
   opacity: 1;
   visibility: visible;
+}.modal__image {
+  max-width: 75vh;
+  max-height: 75vh;
+  top: 90px;
+  left: 424px;
+  margin: 0 auto;
+  display: block;
+  padding: 0;
+  margin: 0;
 }
-
 @media (max-width: 621px) {
-  .modal {
+  .modal__image {
+    gap: 0px;
+    width: 240px;
+    height: 299px;
+    top: 136px;
+    left: 40px;
+    gap: 0px;
+    opacity: 0px;
+  }
+  /*.modal {
     width: 100%;
     padding: 10px;
     left: 50%;
     transform: translateX(-50%);
     /*margin: 10px 0;*/
     max-width: 322px;
-  }
+  }*/
   .modal__container {
     padding: 25px 22px;
     max-width: 282px;
