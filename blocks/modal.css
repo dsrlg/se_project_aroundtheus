@@ -55,12 +55,8 @@
   block-size: contain;
   cursor: pointer;
   position: absolute;
-  /*top: -37px;
-  right: -37px;*/
-  top: -35px;
-  right: -35px;
-  left: 450px;
-    top: -30px
+  right: -33px;
+  top: -29px;
   transform: rotateX("45deg");
 }
 .modal__close:hover {
@@ -107,7 +103,7 @@
   block-size: contain;
   cursor: pointer;
   /*position: absolute;*/
- /* transform: rotateX("45deg");
+/* transform: rotateX("45deg");
   /*width: 30px;
   height: 30px;
   top: 123px;
@@ -139,8 +135,9 @@
   display: flex;
   opacity: 1;
   visibility: visible;
-}.modal__image {
-  max-width: 75vh;
+}
+.modal__image {
+  max-width: 75vw;
   max-height: 75vh;
   top: 90px;
   left: 424px;
@@ -165,59 +162,46 @@
     left: 50%;
     transform: translateX(-50%);
     /*margin: 10px 0;*/
-    max-width: 322px;
-  }*/
-  .modal__container {
-    padding: 25px 22px;
-    max-width: 282px;
-    margin: 0 auto;
-  }
-  .modal__heading {
-    font-size: 18px;
-  }
-  .modal__input {
-    width: 100%;
-    font-size: 14px;
-    text-align: left;
-    padding-bottom: 13px;
-  }
-  .modal__button {
-    text-align: center;
-    font-size: 14px;
-    height: 46px;
-    width: 100%;
-    padding-top: 14px;
-    padding-bottom: 14px;
-  }
-  .modal__close {
-    width: 26px;
-    height: 26px;
-    bottom: calc(100%);
-    left: 250px;
-    top: -45px;
-  }
-  .modal__form {
-    margin-top: 44px;
-    gap: 45px;
-  }
-  .modal_closed {
-    display: none;
-  }
-  .modal_opened {
-    display: flex;
-    opacity: 1;
-    visibility: visible;
-  }
-  /*.modal__preview-closebutton {
-    top: 134px;
-    left: 285px;
-  }*/
-  /*.preview-modal {
-    width: 240px;
-    height: 299px;
-    top: 136px;
-    left: 40px;
-    gap: 0px;
-    opacity: 0px;
-  }*/
+  max-width: 322px;
+}
+*/ .modal__container {
+  padding: 25px 22px;
+  max-width: 282px;
+  margin: 0 auto;
+}
+.modal__heading {
+  font-size: 18px;
+}
+.modal__input {
+  width: 100%;
+  font-size: 14px;
+  text-align: left;
+  padding-bottom: 13px;
+}
+.modal__button {
+  text-align: center;
+  font-size: 14px;
+  height: 46px;
+  width: 100%;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.modal__close {
+  width: 26px;
+  height: 26px;
+  bottom: calc(100%);
+  top: -45px;
+  right: 5px;
+}
+.modal__form {
+  margin-top: 44px;
+  gap: 45px;
+}
+.modal_closed {
+  display: none;
+}
+.modal_opened {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
 }

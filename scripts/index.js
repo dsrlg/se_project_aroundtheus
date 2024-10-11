@@ -54,7 +54,7 @@ function getcardElement(cardData) {
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
-  const cardPreviewImage = cardElement.querySelector(".preview__card-image");
+  const cardPreviewImage = cardElement.querySelector(".modal__image");
   const cardPreviewCloseButton = cardElement.querySelector(
     ".modal__close"
   );
