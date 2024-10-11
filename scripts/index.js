@@ -55,6 +55,7 @@ function getcardElement(cardData) {
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
   const cardPreviewImage = cardElement.querySelector(".preview__card-image");
+  const cardPreviewCloseButton = cardElement.querySelector(".modal__preview-closebutton");
    //likeButton.forEach((likeButton) => {
     likeButton.addEventListener("click", () => {
       likeButton.classList.toggle("card__like-button_active");
@@ -69,6 +70,13 @@ function getcardElement(cardData) {
       previewImageModal.classList.add("modal_opened");
     })
     cardPreviewImage.src=cardData.link;
+    
+    cardPreviewCloseButton.addEventListener("click", () => {
+      const cardToDelete = deleteButton.closest(".card"); // Find the closest parent card element
+      if (cardToDelete) {
+        cardToDelete.remove(); // Remove the card element
+      }
+    });
   
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
