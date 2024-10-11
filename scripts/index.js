@@ -54,6 +54,7 @@ function getcardElement(cardData) {
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
+  const cardPreviewImage = cardElement.querySelector(".preview__card-image");
    //likeButton.forEach((likeButton) => {
     likeButton.addEventListener("click", () => {
       likeButton.classList.toggle("card__like-button_active");
@@ -67,7 +68,7 @@ function getcardElement(cardData) {
     cardImageEl.addEventListener("click", () => {
       previewImageModal.classList.add("modal_opened");
     })
-    
+    cardPreviewImage.src=cardData.link;
   
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
