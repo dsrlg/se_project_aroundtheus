@@ -13,10 +13,9 @@
   justify-content: center;
   border-radius: 10px;
   display: flex;
-  display: none;
   padding: 0 19px;
   z-index: 1;
-  opacity: 0; 
+  opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
@@ -87,7 +86,7 @@
   background-color: black;
   color: white;
   padding-top: 18px;
-    padding-bottom: 18px;
+  padding-bottom: 18px;
   font-size: 18px;
   border: none;
   cursor: pointer;
@@ -98,39 +97,44 @@
   transition: 0.5s;
   opacity: 0.6;
 }
-.modal__preview-closebutton{
-  background: transparent url("../images/close.svg") center no-repeat;
+.modal__preview-closebutton {
+  background: transparent url("../images/previewclose.svg") center no-repeat;
   border: none;
   block-size: contain;
   cursor: pointer;
-  position: absolute;
+  /*position: absolute;*/
   transform: rotateX("45deg");
   width: 30px;
   height: 30px;
-  top: -4px;
-  left: 407.28px;
-opacity: 0px;
+  top: 123px;
+  left: 807px;
+  opacity: 0px;
 }
-
-.modal__container .card__delete-button{
+.modal__container .card__delete-button {
   display: none;
 }
-.preview-modal{
-display: flex;
-flex-direction: column;
-background-color: transparent;
-border: none;
-justify-content: center;
-    align-items: center;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-}
-.modal__container_type_preview{
+.preview-modal {
+  display: flex;
+  flex-direction: column;
   background-color: transparent;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.modal__container-preview {
+  background-color: transparent;
+  position: relative;
 }
 .modal_opened .modal__container {
   transform: translateY(0);
+}
+.modal_opened {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
 }
 
 @media (max-width: 621px) {
@@ -139,13 +143,13 @@ justify-content: center;
     padding: 10px;
     left: 50%;
     transform: translateX(-50%);
-    margin:10px 0;
+    margin: 10px 0;
     max-width: 322px;
   }
   .modal__container {
     padding: 25px 22px;
     max-width: 282px;
-    margin:0 auto;
+    margin: 0 auto;
   }
   .modal__heading {
     font-size: 18px;
@@ -169,18 +173,30 @@ justify-content: center;
     height: 26px;
     bottom: calc(100%);
     left: 250px;
-    top:-45px;
+    top: -45px;
   }
   .modal__form {
     margin-top: 44px;
     gap: 45px;
   }
-}
-.modal_closed {
-  display: none;
-}
-.modal_opened {
-  display: flex;
-  opacity: 1;
-  visibility: visible;
+  .modal_closed {
+    display: none;
+  }
+  .modal_opened {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+  .modal__preview-closebutton {
+    top: 134px;
+    left: 285px;
+  }
+  .preview-modal {
+    width: 240px;
+    height: 299px;
+    top: 136px;
+    left: 40px;
+    gap: 0px;
+    opacity: 0px;
+  }
 }

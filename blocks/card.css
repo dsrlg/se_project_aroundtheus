@@ -67,13 +67,23 @@
   cursor: pointer;
 }
 .preview__card-image {
-  width: 75vh;
-  height: 75vh;
+  max-width: 75vh;
+  max-height: 75vh;
   top: 90px;
   left: 424px;
   margin: 0 auto;
   display: block;
-  max-width: 100%;
   padding: 0;
   margin: 0;
+}
+@media (max-width: 621px) {
+  .preview__card-image {
+    gap: 0px;
+    width: 240px;
+    height: 299px;
+    top: 136px;
+    left: 40px;
+    gap: 0px;
+    opacity: 0px;
+  }
 }
