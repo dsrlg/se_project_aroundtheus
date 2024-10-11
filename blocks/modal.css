@@ -90,6 +90,19 @@
   transition: 0.5s;
   opacity: 0.6;
 }
+.modal__preview-closebutton{
+  background: transparent url(../images/previewclose.svg) center no-repeat;
+  width: 40px;
+height: 40px;
+top: 41px;
+left: 878.28px;
+gap: 0px;
+opacity: 0px;
+rotation: -45 deg;
+}
+.modal__container_type_preview{
+
+}
 @media (max-width: 621px) {
   .modal {
     width: 100%;

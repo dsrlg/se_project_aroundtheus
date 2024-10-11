@@ -49,15 +49,26 @@ function closePopup() {
 
 function getcardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
+  const previewImageModal = cardElement.querySelector(".modal");
+  const deleteButton = cardElement.querySelector(".card__delete-button") ;
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
    //likeButton.forEach((likeButton) => {
     likeButton.addEventListener("click", () => {
-      console.log("t")
-      likeButton.classList.toggle(".card__like-button_active");
+      likeButton.classList.toggle("card__like-button_active");
     });
-
+    deleteButton.addEventListener("click", () => {
+      const cardToDelete = deleteButton.closest(".card"); // Find the closest parent card element
+      if (cardToDelete) {
+        cardToDelete.remove(); // Remove the card element
+      }
+    });
+    cardImageEl.addEventListener("click", () => {
+      previewImageModal.classList.add("modal_opened");
+    })
+    
+  
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
@@ -80,14 +91,12 @@ profileAddCloseButton.addEventListener("click", () => {
   closePopup();
 });
 
-
 profileEditForm.addEventListener("submit", (e) => {
   e.preventDefault();
   profilename.textContent = profileInputTilte.value;
   profiledescription.textContent = profileInputDescription.value;
   closePopup();
 });
-
 
 profileAddButton.addEventListener("click", ()=> {
   profileAddModal.classList.add("modal_opened");
@@ -97,50 +106,9 @@ profileAddForm.addEventListener("submit", () =>{
   closePopup();
 });
 
-// initialCards.forEach((cardData) => {
-//   const cardElement = getcardElement(cardData);
-//   cardListEl.append(cardElement);
-// });
-
-// profileAddButton.addEventListener("click", ()=>   openModal(addCardModal));
-// addCardModalCloseButton.addEventListener("click", () => closeModal(addCardModal))
 function rendercard(cardData,wrapper){
   const cardElement = getcardElement(cardData);
   wrapper.prepend(cardElement)
 }
 initialCards.forEach((cardData)=> rendercard(cardData, cardsWrap));
 
-//delete button
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  console.log(cardElement); // Log to check the cloned element
-
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const cardDeleteButton = cardElement.querySelector(".card__delete-button"); // Updated line
-  
-  console.log(cardDeleteButton); // Log to check if the delete button is found
-  
-  if (!cardDeleteButton) {
-    console.error("cardDeleteButton not found");
-    return; // Exit the function if the delete button is not found
-  }
-
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
-  cardTitleEl.textContent = cardData.name;
-
-  // Add the event listener for the delete button within the scope of the card
-  cardDeleteButton.addEventListener("click", () => {
-    console.log("Delete button clicked"); // For debugging
-    const cardToDelete = cardDeleteButton.closest(".card");
-    if (cardToDelete) {
-      console.log("Card found and will be deleted"); // For debugging
-      cardToDelete.remove();
-    } else {
-      console.log("Card not found"); // For debugging
-    }
-  });
-
-  return cardElement;
-}
