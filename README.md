@@ -19,8 +19,8 @@ And it has a functionality for users to like the scenaries. In this project view
 
 ![Edit form ](image-2.png)    ![Add form] ![alt text](image.png)
 
-![Preview Image in Desktop design]      
-![Preview in Mobile design]
+![Preview Image in Desktop design]   ![alt text](image-1.png)   
+![Preview in Mobile design] ![alt text](image-2.png)
   
 **Github link**
 https://github.com/dsrlg/se_project_aroundtheus
