@@ -10,15 +10,6 @@
     <meta name="author" content="">
     <title></title>
 </head>
-  <!---<head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=1.0, maximum-scale=1.0"
-    />
-    <meta content="ie=edge" http-equiv="x-UA-compatible" />
-    <title>Around The U.S</title>
-    <link href="./pages/index.css" rel="stylesheet" />--->
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
@@ -63,7 +54,7 @@
       <div class="modal__container">
         <button class="modal__close" id="profile-modal-close"></button>
         <h2 class="modal__heading">Edit profile</h2>
-        <form class="modal__form">
+        <form name="edit-form" class="modal__form">
           <div class="modal__input-container">
             <input
               class="modal__input"
@@ -79,17 +70,18 @@
               name="description"
               placeholder="Description"
             />
+            
           </div>
           <button class="modal__button">Save</button>
         </form>
       </div>
     </div>
     <!--add modal-->
-    <div class="modal" id="profile-add-modal">
+    <div class="modal" id="card-add-modal">
       <div class="modal__container">
         <button class="modal__close" id="add-modal-close"></button>
         <h2 class="modal__heading">New Place</h2>
-        <form class="modal__form">
+        <form name="card-form" class="modal__form">
           <div class="modal__input-container">
             <input
               class="modal__input"
@@ -118,15 +110,15 @@
           <h2 class="card__title"></h2>
           <button class="card__like-button" type="button"></button>
         </div>
-        <div class="modal" id="preview-modal">
-          <div class="modal__container-preview">
-            <button class="modal__close" type="button"></button>
-            <img src="" alt="" class="modal__image" />
-            <div class="modal__caption"></div>
-          </div>
-        </div>
       </li>
     </template>
+    <div class="modal" id="preview-modal">
+      <div class="modal__container-preview">
+        <button class="modal__close" type="button"></button>
+        <img src="" alt="" class="modal__image" />
+        <p class="modal__caption"></p>
+      </div>
+    </div>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
