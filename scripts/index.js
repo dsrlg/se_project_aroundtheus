@@ -31,8 +31,11 @@ const profilename = document.querySelector(".profile__title");
 const profiledescription = document.querySelector(".profile__description");
 const cardsWrap = document.querySelector(".cards__list");
 const profileInputTilte = document.querySelector("#profile-title-input");
-const profileInputDescription = document.querySelector("#profile-description-input");
+const profileInputDescription = document.querySelector(
+  "#profile-description-input"
+);
 const profileEditForm = document.forms["edit-form"];
+
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardListEl = document.querySelector(".cards__list");
@@ -40,10 +43,16 @@ const cardAddbutton = document.querySelector(".profile__add-button");
 const cardAddModal = document.querySelector("#card-add-modal");
 const cardAddForm = document.forms["card-form"];
 
+const previewImageModal = document.querySelector("#preview-modal");
+const cardModalCaption = document.querySelector(".modal__caption");
+const cardPreviewImage = document.querySelector(".modal__image");
+const cardPreviewCloseButton = document.querySelector(
+  ".modal__close_image_preview"
+);
 const addNewInput = document.querySelector("#profile-input");
 const addNewImage = document.querySelector("#profile-url-input");
 
-function openPopup(pop){
+function openPopup(pop) {
   pop.classList.add("modal_opened");
 }
 function closePopup(pop) {
@@ -52,36 +61,33 @@ function closePopup(pop) {
 
 function getcardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
-  const previewImageModal = cardElement.querySelector(".modal");
   const deleteButton = cardElement.querySelector(".card__delete-button");
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
-  const cardPreviewImage = cardElement.querySelector(".modal__image");
-  const cardPreviewCloseButton = cardElement.querySelector( ".modal__close");
-  const cardModalCaption = cardElement.querySelector(".modal__caption");
+
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
   });
   deleteButton.addEventListener("click", () => {
-    const cardToDelete = deleteButton.closest(".card"); 
+    const cardToDelete = deleteButton.closest(".card");
     if (cardToDelete) {
-      cardToDelete.remove(); 
+      cardToDelete.remove();
     }
   });
   cardImageEl.addEventListener("click", () => {
     openPopup(previewImageModal);
   });
- 
+
   cardPreviewImage.src = cardData.link;
   cardPreviewCloseButton.addEventListener("click", () => {
-   closePopup(previewImageModal)
+    closePopup(previewImageModal);
   });
 
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
-  cardModalCaption.innerHTML  = cardData.name;
+  cardModalCaption.textContent = cardData.name;
   return cardElement;
 }
 
@@ -91,11 +97,11 @@ profileEditButton.addEventListener("click", () => {
   openPopup(profileEditModal);
 });
 
-const closeButtons = document.querySelectorAll('.modal__close');
+const closeButtons = document.querySelectorAll(".modal__close");
 
 closeButtons.forEach((button) => {
-  const popup = button.closest('.modal');
-  button.addEventListener('click', () => closePopup(popup));
+  const popup = button.closest(".modal");
+  button.addEventListener("click", () => closePopup(popup));
 });
 
 profileEditForm.addEventListener("submit", (e) => {
@@ -106,12 +112,12 @@ profileEditForm.addEventListener("submit", (e) => {
 });
 
 cardAddbutton.addEventListener("click", () => {
-  openPopup( cardAddModal);
+  openPopup(cardAddModal);
 });
 
 cardAddForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const inputCard = {name  : addNewInput.value, link  :addNewImage.value};
+  const inputCard = { name: addNewInput.value, link: addNewImage.value };
   const cardE = getcardElement(inputCard);
   cardListEl.append(cardE);
   closePopup(cardAddModal);
