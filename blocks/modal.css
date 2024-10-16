@@ -204,7 +204,7 @@
     width: 26px;
     height: 26px;
     bottom: calc(100%);
-    top: -28px;
+    top: -37px;
     right: 8px;
   }
   .modal__form {
@@ -218,5 +218,11 @@
     display: flex;
     opacity: 1;
     visibility: visible;
+  }
+  .modal__close_image_preview {
+    width: 30px;
+    height: 30px;
+    top: 56px;
+    left: 283.21px;
   }
 }
