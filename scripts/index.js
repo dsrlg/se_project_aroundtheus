@@ -125,18 +125,6 @@ cardAddForm.addEventListener("submit", (e) => {
   e.target.reset();
 });
 
-
-
-//function clearInputs() {
-  //const inputs = document.querySelectorAll('input'); // Select all input elements
-  //inputs.forEach(input => {
-    //input.value = ''; // Clear the input values
-  //});
-//}
-
-// Call this function after adding the new card
-//clearInputs();//
-
 function rendercard(cardData, wrapper) {
   const cardElement = getcardElement(cardData);
 
