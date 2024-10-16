@@ -122,7 +122,7 @@ cardAddForm.addEventListener("submit", (e) => {
   const cardE = getcardElement(inputCard);
   cardListEl.prepend(cardE);
   closePopup(cardAddModal);
-  e.inputCard.reset();
+  e.target.reset();
 });
 
 
