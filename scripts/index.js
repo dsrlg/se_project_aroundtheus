@@ -75,11 +75,12 @@ function getcardElement(cardData) {
       cardToDelete.remove();
     }
   });
-  cardImageEl.addEventListener("click", () => {
+  cardImageEl.addEventListener("click", (e) => {
+    e.preventDefault();
+    cardPreviewImage.src = cardData.link;
     openPopup(previewImageModal);
   });
 
-  cardPreviewImage.src = cardData.link;
   cardPreviewCloseButton.addEventListener("click", () => {
     closePopup(previewImageModal);
   });
