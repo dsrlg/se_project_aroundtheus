@@ -120,9 +120,22 @@ cardAddForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const inputCard = { name: addNewInput.value, link: addNewImage.value };
   const cardE = getcardElement(inputCard);
-  cardListEl.append(cardE);
+  cardListEl.prepend(cardE);
   closePopup(cardAddModal);
+  e.inputCard.reset();
 });
+
+
+
+//function clearInputs() {
+  //const inputs = document.querySelectorAll('input'); // Select all input elements
+  //inputs.forEach(input => {
+    //input.value = ''; // Clear the input values
+  //});
+//}
+
+// Call this function after adding the new card
+//clearInputs();//
 
 function rendercard(cardData, wrapper) {
   const cardElement = getcardElement(cardData);
