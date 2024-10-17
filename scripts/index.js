@@ -84,7 +84,6 @@ function getcardElement(cardData) {
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
-  cardModalCaption.textContent = cardData.name;
   return cardElement;
 }
 
@@ -118,6 +117,7 @@ cardAddForm.addEventListener("submit", (e) => {
   const inputCard = { name: addNewInput.value, link: addNewImage.value };
   rendercard(inputCard, cardListEl);
   e.target.reset();
+  closePopup(cardAddModal);
 });
 
 function rendercard(cardData, wrapper) {
