@@ -64,20 +64,20 @@
   opacity: 0.6;
 }
 .modal__close_image_preview {
-  background: transparent url("../images/close.svg") center no-repeat;
-  border: none;
+  /*background: transparent url("../images/close.svg") center no-repeat;
+  border: none;*/
   width: 40px;
   height: 40px;
-  background-size: 35px 35px;
+  /*background-size: 35px 35px;
   background-size: cover;
   block-size: contain;
   cursor: pointer;
-  position: absolute;
+  position: absolute;*/
   top: 46px;
   right: -47px;
   gap: 0px;
   opacity: 0px;
-  transform: rotateX("45deg");
+  /*transform: rotateX("45deg");*/
 }
 .modal__form {
   display: flex;
