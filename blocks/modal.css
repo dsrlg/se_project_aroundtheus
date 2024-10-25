@@ -43,7 +43,7 @@
 .modal__input-container {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+ /* gap: 30px;*/
 }
 .modal__close {
   background: transparent url("../images/close.svg") center no-repeat;
@@ -64,15 +64,9 @@
   opacity: 0.6;
 }
 .modal__close_image_preview {
-  /*background: transparent url("../images/close.svg") center no-repeat;
-  border: none;*/
+
   width: 40px;
   height: 40px;
-  /*background-size: 35px 35px;
-  background-size: cover;
-  block-size: contain;
-  cursor: pointer;
-  position: absolute;*/
   top: 46px;
   right: -47px;
   gap: 0px;
