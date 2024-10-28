@@ -6,7 +6,9 @@
 **Intro**
   
 This project is about Jacques cousteau who is an explorer and travelled around the US.. This webpage showcasing different places he travelled.
-And it has a functionality for users to like the scenaries. In this project viewer can edit the profile and can add new places and aslo can delete the images with the smooth transition.
+And it has a functionality for users to like the scenaries. In this project viewer can edit the profile and can add new places and aslo can delete the images with the smooth transition. 
+ 
+
 
  **Tecnologies** 
  It contanis Html5, CSS, and javascript and abale to support reactive functionalities. javascript is used to rendered the images, data and content and to delete the content.  The project is hosted by the git which you can share with other developers. And this project is formatted and well structured using prettier.

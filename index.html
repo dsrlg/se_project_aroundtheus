@@ -53,13 +53,13 @@
       </footer>
     </div>
     <!--edit modal-->
-    <div class="popup popup__type_edit" id="profile-edit-modal">
+    <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button class="modal__close" id="profile-modal-close"></button>
         <h2 class="modal__heading">Edit profile</h2>
         <form name="edit-form" class="modal__form">
           <div class="modal__input-container">
-            <inputs
+            <input
               class="modal__input"
               id="profile-title-input"
               type="text"
@@ -69,7 +69,10 @@
               maxlength="40"
               required
             />
-            <span class="popup__error" id="profile-title-input-error"></span>
+            <span
+              class="modal__error modal__error-text-visible"
+              id="profile-title-input-error"
+            ></span>
             <input
               class="modal__input"
               id="profile-description-input"
@@ -80,7 +83,10 @@
               maxlength="200"
               required
             />
-            <span class="popup__error" id="profile-description-input-error"></span>
+            <span
+              class="modal__error modal__error-text-visible"
+              id="profile-description-input-error"
+            ></span>
           </div>
           <button class="modal__button">Save</button>
         </form>
@@ -103,7 +109,11 @@
               maxlength="30"
               required
             />
-            <span class="popup__error-text" id="popup-input-error">Please fill out this field.</span>
+            <span
+              class="modal__error modal__error-text-visible"
+              id="profile-input-error"
+              >Please fill out this field.</span
+            >
             <input
               class="modal__input"
               id="profile-input-url"
@@ -112,7 +122,11 @@
               placeholder="Image URL"
               required
             />
-            <span class="popup__error-text" id="popup-url-input-error">Please enter a web address.</span>
+            <span
+              class="modal__error modal__error-text-visible"
+              id="profile-input-url-error"
+              >Please enter a web address.</span
+            >
           </div>
           <button class="modal__button">Save</button>
         </form>

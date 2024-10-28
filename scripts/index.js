@@ -48,13 +48,31 @@ const cardModalCaption = document.querySelector(".modal__caption");
 const cardPreviewImage = document.querySelector(".modal__image");
 
 const addNewInput = document.querySelector("#profile-input");
-const addNewImage = document.querySelector("#profile-url-input");
+const addNewImage = document.querySelector("#profile-input-url");
 
 function openPopup(pop) {
   pop.classList.add("modal_opened");
+  document.addEventListener("keydown", closeModalEsc);
+  pop.addEventListener("mousedown", closeOverlay);
 }
 function closePopup(pop) {
   pop.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeModalEsc);
+  pop.removeEventListener("mousedown", closeOverlay);
+}
+
+function closeOverlay(e) {
+  const modalOpened = document.querySelector(".modal_opened");
+  if (e.target.classList.contains("modal_opened")) {
+    closePopup(modalOpened);
+  }
+}
+
+function closeModalEsc(e) {
+  if (e.key === "Escape") {
+    const modalOpened = document.querySelector(".modal_opened");
+    closePopup(modalOpened);
+  }
 }
 
 function getcardElement(cardData) {

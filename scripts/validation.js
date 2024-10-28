@@ -1,89 +1,70 @@
-//const options = {
-//  formSelector: ".form",
-//inputSelector: ".modal__input",
-//submitButtonSelector: ".modal__button",
-//inactiveButtonClass: "popup__button_disabled",
-//inputErrorClass: "popup__input_type_error",
-//errorClass: "popup__error_visible"
-//};
-
-//function showInputerror(formElement, inputElement, options){
-////const errorMesssageEl= form.querySelector(`#{inputElement.id}-error`);
-//inputElement.classList.add(options.inputErrorClass);
-//errorMesssageEl.textContent=inputElement.validationMessage;
-//errorMesssageEl.classList.add(errorClass);
-//}
-
-//function checkInputValidity(formElement, inputElement, options){
-//if(!inputElement.validity.valid){
-//  showInputerror(formElement, inputElement, options);
-//}else{
-//  hideInputerror(formElement, inputElement, options);
-//}
-//////}
-
-//function setEventListenrs(formElement, options){
-//  const{inputSelector}=options;
-//const inputElement = [...formElement.querySelectorAll(inputSelector)];
-//inputElement.forEach(inputElement => {
-//  inputElement.addEventListener("input" , () =>{
-//checkInputValidity(formElement, inputElement, options);
-//      });
-//} );
-//}
-//function enableValidation(options){
-//const formElement = [...(document.querySelectorAll("options.formSelector"))];
-//formElement.forEach(formElement =>{
-//  formElement.addEventListener("submit", (e) =>{
-//e.preventDefault();
-//  });
-//setEventListenrs(formElement, options);
-//});
-//}
-//enableValidation(options);
-
-//per New video
-
 const options = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
-  inputErrorClass: "popup__error-visible",
+  inputErrorClass: ".modal__error-text-visible",
+  errorClass: ".modal__error",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
 };
 enableValidation(options);
 
 function enableValidation(options) {
-  const forms = document.querySelectorAll(options.formSelector);
+  const forms = [...document.querySelectorAll(options.formSelector)];
   forms.forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+    });
     setEventListeners(form, options);
   });
 }
 
+function toggleButtonState(inputEls, submitButton, options) {
+  let foundInValid = false;
+  inputEls.forEach((input) => {
+    if (!input.validity.valid) {
+      foundInValid = true;
+    }
+  });
+  if (foundInValid) {
+    submitButton.classList.add(options.inactiveButtonClass);
+    submitButton.disabled = true;
+  } else {
+    submitButton.classList.remove(options.inactiveButtonClass);
+    submitButton.disabled = false;
+  }
+}
+
 function setEventListeners(form, options) {
-  const inputs = form.querySelectorAll(options.inputSelector);
+  const inputs = [...form.querySelectorAll(options.inputSelector)];
+  const submitButton = form.querySelector(".modal__button");
   inputs.forEach((input) => {
     input.addEventListener("input", (event) => {
-      checkInputValidity(input, options);
+      checkInputValidity(form, input, options);
+      toggleButtonState(inputs, submitButton, options);
+      event.preventDefault();
     });
   });
 }
-
-function checkInputValidity(input, options) {
-    console.log(`${input}.id`)
-  const errorElement = document.querySelector(`${input.id}-error`);
+function checkInputValidity(form, input, options) {
   if (!input.validity.valid) {
-    showInputError(input, errorElement, input.validationMessage);
+    return showInputError(form, input);
   } else {
-    hideInputError(input, errorElement);
+    hideInputError(form, input);
   }
 }
-function showInputError(input, errorElement, message) {
-  errorElement.textContent = inputErrorClass.value;
-  errorElement.classList.add(options.inputErrorClass);
-  input.classList.add(".popup__error-visible" );
+function showInputError(form, input) {
+  const errorElement = form.querySelector(`#${input.id}-error`);
+  input.classList.add(options.inputErrorClass);
+  errorElement.classList.add(options.errorClass);
+  errorElement.textContent = input.validationMessage;
+  errorElement.urlContent = input.validationMessage;
 }
 
-function hideInputError(input, errorElement) {
+function hideInputError(form, input) {
+  const errorElement = form.querySelector(`#${input.id}-error`);
+  input.classList.remove(options.inputErrorClass);
+  errorElement.urlContent = "";
   errorElement.textContent = "";
-  errorElement.classList.remove(options.inputErrorClass);
-  input.classList.remove("form__input_type_error");
+
+  errorElement.classList.remove(options.errorClass);
 }

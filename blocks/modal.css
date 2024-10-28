@@ -5,7 +5,6 @@
   left: 0;
   bottom: 0;
   right: 0;
-  display: none;
   flex-direction: column;
   box-sizing: border-box;
   align-items: center;
@@ -43,7 +42,7 @@
 .modal__input-container {
   display: flex;
   flex-direction: column;
- /* gap: 30px;*/
+  /* gap: 30px;*/
 }
 .modal__close {
   background: transparent url("../images/close.svg") center no-repeat;
@@ -64,14 +63,12 @@
   opacity: 0.6;
 }
 .modal__close_image_preview {
-
   width: 40px;
   height: 40px;
   top: 46px;
   right: -47px;
   gap: 0px;
   opacity: 0px;
-  /*transform: rotateX("45deg");*/
 }
 .modal__form {
   display: flex;
@@ -90,6 +87,7 @@
   gap: 30px;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-weight: 400;
+  margin-top: 13px;
 }
 .modal__button {
   width: 100%;
@@ -106,6 +104,9 @@
 .modal__button:hover {
   transition: 0.5s;
   opacity: 0.6;
+}
+.modal__button_disabled {
+  background: rgba(0, 0, 0, 0.8);
 }
 .modal__container .card__delete-button {
   display: none;
@@ -156,6 +157,19 @@
   padding: 0;
   text-align: left;
   color: #fff;
+}
+.modal__error {
+  display: none;
+}
+.modal__error-text-visible {
+  color: red;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  text-align: left;
+  margin-top: 5px;
+  margin-bottom: px;
+  display: block;
 }
 @media (max-width: 621px) {
   .modal__image {
