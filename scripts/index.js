@@ -62,7 +62,6 @@ function closePopup(pop) {
 }
 
 function closeOverlay(e) {
-  const modalOpened = document.querySelector(".modal_opened");
   if (e.target.classList.contains("modal_opened")) {
     closePopup(modalOpened);
   }
