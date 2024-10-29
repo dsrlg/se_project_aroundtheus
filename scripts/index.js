@@ -63,7 +63,7 @@ function closePopup(pop) {
 
 function closeOverlay(e) {
   if (e.target.classList.contains("modal_opened")) {
-    closePopup(modalOpened);
+    closePopup(e.target);
   }
 }
 

@@ -160,6 +160,7 @@
 }
 .modal__error {
   display: none;
+  height: 1px;
 }
 .modal__error-text-visible {
   color: red;
@@ -168,7 +169,7 @@
   line-height: 14.52px;
   text-align: left;
   margin-top: 5px;
-  margin-bottom: px;
+  margin-bottom: 13px;
   display: block;
 }
 @media (max-width: 621px) {
