@@ -1,3 +1,6 @@
+import Card from "../components/card.js";
+
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -24,6 +27,14 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+
+const cardData= {
+  name: "Lago di Braies",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg"
+}
+
+const card = new Card(cardData, "#card-template");
+card.getView();
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -81,15 +92,14 @@ function getcardElement(cardData) {
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
 
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
+  likeButton.addEventListener("click", ()=>{
+  likeButton.classList.toggle("card__like-button_active")
   });
-  deleteButton.addEventListener("click", () => {
+  deleteButton.addEventListener("click", ()=>)
     const cardToDelete = deleteButton.closest(".card");
     if (cardToDelete) {
       cardToDelete.remove();
     }
-  });
   cardImageEl.addEventListener("click", (e) => {
     e.preventDefault();
     cardPreviewImage.src = cardData.link;
@@ -104,6 +114,15 @@ function getcardElement(cardData) {
   return cardElement;
 }
 
+//const handleLikeIcon=(e)=>{
+  //e.target.classList.toggle("card__like-button_active");
+//}
+//const handleDeleteCard=(e)=>{
+  //const cardToDelete = e.target.closest(".card");
+    //if (cardToDelete) {
+      //cardToDelete.remove();
+    //}
+//}
 profileEditButton.addEventListener("click", () => {
   profileInputTilte.value = profilename.textContent;
   profileInputDescription.value = profiledescription.textContent;
