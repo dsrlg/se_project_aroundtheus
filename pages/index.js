@@ -1,5 +1,5 @@
 import Card from "../components/card.js";
-
+import FormValidator from "../components/formValidator.js"
 
 const initialCards = [
   {
@@ -54,12 +54,32 @@ const cardAddbutton = document.querySelector(".profile__add-button");
 const cardAddModal = document.querySelector("#card-add-modal");
 const cardAddForm = document.forms["card-form"];
 
+//const AddformEl = cardAddForm.querySelector(".modal__form");
+//const EditformEl = profileEditForm.querySelector(".modal__form");
+
+const formValidationOptions={
+  formSelector: ".modal__form",
+inputSelector: ".modal__input",
+inputErrorClass: ".modal__error-text-visible",
+errorClass: ".modal__error",
+submitButtonSelector: ".modal__button",
+inactiveButtonClass: "modal__button_disabled",
+}
+
+const addFormValidator = new FormValidator(formValidationOptions, cardAddForm);
+addFormValidator._enableValidation();
+
+const editFormValidator = new FormValidator(formValidationOptions, profileEditForm );
+editFormValidator._enableValidation();
+
 const previewImageModal = document.querySelector("#preview-modal");
 const cardModalCaption = document.querySelector(".modal__caption");
 const cardPreviewImage = document.querySelector(".modal__image");
 
 const addNewInput = document.querySelector("#profile-input");
 const addNewImage = document.querySelector("#profile-input-url");
+
+
 
 function openPopup(pop) {
   pop.classList.add("modal_opened");
@@ -95,11 +115,12 @@ function getcardElement(cardData) {
   likeButton.addEventListener("click", ()=>{
   likeButton.classList.toggle("card__like-button_active")
   });
-  deleteButton.addEventListener("click", ()=>)
+  deleteButton.addEventListener("click", ()=>{
     const cardToDelete = deleteButton.closest(".card");
     if (cardToDelete) {
       cardToDelete.remove();
     }
+  });
   cardImageEl.addEventListener("click", (e) => {
     e.preventDefault();
     cardPreviewImage.src = cardData.link;
@@ -160,6 +181,5 @@ function rendercard(cardData, wrapper) {
   const cardElement = getcardElement(cardData);
 
   wrapper.prepend(cardElement);
-  // cardListEl.append(cardElement);//
 }
 initialCards.forEach((cardData) => rendercard(cardData, cardsWrap));
