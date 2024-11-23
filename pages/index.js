@@ -33,7 +33,7 @@ const cardData= {
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg"
 }
 
-const card = new Card(cardData, "#card-template");
+const card = new Card(cardData, "#card-template", handleImageClick);
 card.getView();
 
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -103,12 +103,44 @@ function closeModalEsc(e) {
   }
 }
 
+
+function handleImageClick(name, link){
+  // open the modal and use the src and link value 
+  // to assign the image and caption of the modal
+  const previewImageModal = document.querySelector("#preview-modal");
+const cardModalCaption = document.querySelector(".modal__caption");
+const cardPreviewImage = document.querySelector(".modal__image");
+function openPopup(pop) {
+    pop.classList.add("modal_opened");
+    document.addEventListener("keydown", closeModalEsc);
+    pop.addEventListener("mousedown", closeOverlay);
+  }
+  function closePopup(pop) {
+    pop.classList.remove("modal_opened");
+    document.removeEventListener("keydown", closeModalEsc);
+    pop.removeEventListener("mousedown", closeOverlay);
+  }
+  
+  function closeOverlay(e) {
+    if (e.target.classList.contains("modal_opened")) {
+      closePopup(e.target);
+    }
+  }
+  
+  function closeModalEsc(e) {
+    if (e.key === "Escape") {
+      const modalOpened = document.querySelector(".modal_opened");
+      closePopup(modalOpened);
+    }
+  }
+  
+}
 function getcardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
-  const deleteButton = cardElement.querySelector(".card__delete-button");
+ // const deleteButton = cardElement.querySelector(".card__delete-button");
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
+  //const likeButton = cardElement.querySelector(".card__like-button");
 
   //likeButton.addEventListener("click", ()=>{
 //likeButton.classList.toggle("card__like-button_active")
