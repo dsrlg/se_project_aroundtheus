@@ -58,13 +58,13 @@ const formValidationOptions = {
 };
 
 const addFormValidator = new FormValidator(formValidationOptions, cardAddForm);
-addFormValidator._enableValidation();
+addFormValidator.enableValidation();
 
 const editFormValidator = new FormValidator(
   formValidationOptions,
   profileEditForm
 );
-editFormValidator._enableValidation();
+editFormValidator.enableValidation();
 
 const previewImageModal = document.querySelector("#preview-modal");
 const cardModalCaption = document.querySelector(".modal__caption");
@@ -106,32 +106,32 @@ function handleImageClick(name, link) {
 }
 
 //function getcardElement(cardData) {
-  //const cardElement = cardTemplate.cloneNode(true);
-  // const deleteButton = cardElement.querySelector(".card__delete-button");
- 
-  //const likeButton = cardElement.querySelector(".card__like-button");
+//const cardElement = cardTemplate.cloneNode(true);
+// const deleteButton = cardElement.querySelector(".card__delete-button");
 
-  //likeButton.addEventListener("click", ()=>{
-  //likeButton.classList.toggle("card__like-button_active")
-  //});
-  //deleteButton.addEventListener("click", ()=>{
-  //  const cardToDelete = deleteButton.closest(".card");
-  //if (cardToDelete) {
-  //cardToDelete.remove();
-  //}
-  //});
-  // cardImageEl.addEventListener("click", (e) => {
-  // e.preventDefault();
-  //cardPreviewImage.src = cardData.link;
-  //cardPreviewImage.alt = cardData.name;
-  //cardModalCaption.textContent = cardData.name;
-  //openPopup(previewImageModal);
-  //});
+//const likeButton = cardElement.querySelector(".card__like-button");
 
-  //cardTitleEl.textContent = cardData.name;
-  //cardImageEl.src = cardData.link;
-  //cardImageEl.alt = cardData.name;
-  //return cardElement;
+//likeButton.addEventListener("click", ()=>{
+//likeButton.classList.toggle("card__like-button_active")
+//});
+//deleteButton.addEventListener("click", ()=>{
+//  const cardToDelete = deleteButton.closest(".card");
+//if (cardToDelete) {
+//cardToDelete.remove();
+//}
+//});
+// cardImageEl.addEventListener("click", (e) => {
+// e.preventDefault();
+//cardPreviewImage.src = cardData.link;
+//cardPreviewImage.alt = cardData.name;
+//cardModalCaption.textContent = cardData.name;
+//openPopup(previewImageModal);
+//});
+
+//cardTitleEl.textContent = cardData.name;
+//cardImageEl.src = cardData.link;
+//cardImageEl.alt = cardData.name;
+//return cardElement;
 //}
 
 profileEditButton.addEventListener("click", () => {
