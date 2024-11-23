@@ -8,6 +8,7 @@
 This project is about Jacques cousteau who is an explorer and travelled around the US.. This webpage showcasing different places he travelled.
 And it has a functionality for users to like the scenaries. In this project viewer can edit the profile and can add new places and aslo can delete the images with the smooth transition. 
     All the modal forms has been added with validation functionality. Now it will validate the useer input and provide the error message if the inputs fields are empty or requirements are not met. The form will close by clicking overlay or Esc key.
+    
 
 
  **Tecnologies** 
