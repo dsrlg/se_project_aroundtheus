@@ -9,7 +9,6 @@ class FormValidator {
     this._form = form;
   }
 
-
   _setEventListeners() {
     const inputs = [...this._form.querySelectorAll(this._inputSelector)];
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
@@ -68,6 +67,12 @@ class FormValidator {
     });
 
     this._setEventListeners(this._form);
+  }
+
+  disableValidation() {
+    this._form.addEventListener("submit", (e) => {
+      e.target.reset();
+    });
   }
 }
 

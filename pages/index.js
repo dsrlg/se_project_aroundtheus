@@ -1,5 +1,5 @@
-import Card from "../components/card.js";
-import FormValidator from "../components/formValidator.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 
 const initialCards = [
   {
@@ -38,16 +38,12 @@ const profileInputDescription = document.querySelector(
   "#profile-description-input"
 );
 const profileEditForm = document.forms["edit-form"];
-
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardListEl = document.querySelector(".cards__list");
 const cardAddbutton = document.querySelector(".profile__add-button");
 const cardAddModal = document.querySelector("#card-add-modal");
 const cardAddForm = document.forms["card-form"];
-//const cardImageEl = cardElement.querySelector(".card__image");
-//const cardTitleEl = cardElement.querySelector(".card__title");
-
 const formValidationOptions = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
@@ -57,14 +53,21 @@ const formValidationOptions = {
   inactiveButtonClass: "modal__button_disabled",
 };
 
-const addFormValidator = new FormValidator(formValidationOptions, cardAddForm);
-addFormValidator.enableValidation();
+// define an object for storing validators
+const formValidators = {};
 
-const editFormValidator = new FormValidator(
-  formValidationOptions,
-  profileEditForm
-);
-editFormValidator.enableValidation();
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement);
+    const formName = formElement.getAttribute("name");
+
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation(formValidationOptions);
 
 const previewImageModal = document.querySelector("#preview-modal");
 const cardModalCaption = document.querySelector(".modal__caption");
@@ -98,41 +101,11 @@ function closeModalEsc(e) {
 }
 
 function handleImageClick(name, link) {
-  console.log("handleImageClick has run!");
   cardPreviewImage.src = link;
   cardPreviewImage.alt = name;
   cardModalCaption.textContent = name;
   openPopup(previewImageModal);
 }
-
-//function getcardElement(cardData) {
-//const cardElement = cardTemplate.cloneNode(true);
-// const deleteButton = cardElement.querySelector(".card__delete-button");
-
-//const likeButton = cardElement.querySelector(".card__like-button");
-
-//likeButton.addEventListener("click", ()=>{
-//likeButton.classList.toggle("card__like-button_active")
-//});
-//deleteButton.addEventListener("click", ()=>{
-//  const cardToDelete = deleteButton.closest(".card");
-//if (cardToDelete) {
-//cardToDelete.remove();
-//}
-//});
-// cardImageEl.addEventListener("click", (e) => {
-// e.preventDefault();
-//cardPreviewImage.src = cardData.link;
-//cardPreviewImage.alt = cardData.name;
-//cardModalCaption.textContent = cardData.name;
-//openPopup(previewImageModal);
-//});
-
-//cardTitleEl.textContent = cardData.name;
-//cardImageEl.src = cardData.link;
-//cardImageEl.alt = cardData.name;
-//return cardElement;
-//}
 
 profileEditButton.addEventListener("click", () => {
   profileInputTilte.value = profilename.textContent;
@@ -148,6 +121,7 @@ closeButtons.forEach((button) => {
 });
 
 profileEditForm.addEventListener("submit", (e) => {
+  formValidators["edit-form"].disableValidation();
   e.preventDefault();
   profilename.textContent = profileInputTilte.value;
   profiledescription.textContent = profileInputDescription.value;
@@ -160,6 +134,7 @@ cardAddbutton.addEventListener("click", (e) => {
 });
 
 cardAddForm.addEventListener("submit", (e) => {
+  formValidators[cardAddForm.getAttribute("name")].disableValidation();
   e.preventDefault();
   const inputCard = { name: addNewInput.value, link: addNewImage.value };
   rendercard(inputCard, cardListEl);
@@ -168,8 +143,11 @@ cardAddForm.addEventListener("submit", (e) => {
 });
 
 function rendercard(cardData, wrapper) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
-  const cardElement = card.getView();
+  const cardElement = createCard(cardData);
   wrapper.prepend(cardElement);
+}
+function createCard(item) {
+  const card = new Card(item, "#card-template", handleImageClick);
+  return card.getView();
 }
 initialCards.forEach((cardData) => rendercard(cardData, cardsWrap));

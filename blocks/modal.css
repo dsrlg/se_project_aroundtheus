@@ -106,7 +106,7 @@
   opacity: 0.6;
 }
 .modal__button_disabled {
-  background: rgba(0, 0, 0, 0.8);
+  background: gray;
 }
 .modal__container .card__delete-button {
   display: none;
