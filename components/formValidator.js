@@ -74,6 +74,11 @@ class FormValidator {
       e.target.reset();
     });
   }
+
+  disableButton() {
+    this._submitButton.classList.add(this._inactiveButtonClass);
+    this._submitButton.disabled = true;
+  }
 }
 
 export default FormValidator;

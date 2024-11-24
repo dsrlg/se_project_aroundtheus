@@ -135,6 +135,7 @@ cardAddbutton.addEventListener("click", (e) => {
 
 cardAddForm.addEventListener("submit", (e) => {
   formValidators[cardAddForm.getAttribute("name")].disableValidation();
+  formValidators[cardAddForm.getAttribute("name")].disableButton();
   e.preventDefault();
   const inputCard = { name: addNewInput.value, link: addNewImage.value };
   rendercard(inputCard, cardListEl);
