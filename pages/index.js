@@ -121,7 +121,6 @@ closeButtons.forEach((button) => {
 });
 
 profileEditForm.addEventListener("submit", (e) => {
-  formValidators["edit-form"].disableValidation();
   e.preventDefault();
   profilename.textContent = profileInputTilte.value;
   profiledescription.textContent = profileInputDescription.value;
@@ -134,13 +133,12 @@ cardAddbutton.addEventListener("click", (e) => {
 });
 
 cardAddForm.addEventListener("submit", (e) => {
-  formValidators[cardAddForm.getAttribute("name")].disableValidation();
-  formValidators[cardAddForm.getAttribute("name")].disableButton();
   e.preventDefault();
   const inputCard = { name: addNewInput.value, link: addNewImage.value };
   rendercard(inputCard, cardListEl);
   e.target.reset();
   closePopup(cardAddModal);
+  formValidators[cardAddForm.getAttribute("name")].disableButton();
 });
 
 function rendercard(cardData, wrapper) {

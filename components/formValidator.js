@@ -69,12 +69,6 @@ class FormValidator {
     this._setEventListeners(this._form);
   }
 
-  disableValidation() {
-    this._form.addEventListener("submit", (e) => {
-      e.target.reset();
-    });
-  }
-
   disableButton() {
     this._submitButton.classList.add(this._inactiveButtonClass);
     this._submitButton.disabled = true;
