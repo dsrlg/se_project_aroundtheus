@@ -121,7 +121,7 @@ closeButtons.forEach((button) => {
 });
 
 profileEditForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+   e.preventDefault();
   profilename.textContent = profileInputTilte.value;
   profiledescription.textContent = profileInputDescription.value;
   closePopup(profileEditModal);
