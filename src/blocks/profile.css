@@ -14,14 +14,14 @@
   align-items: baseline;
 }
 .profile__editbutton {
-  background: transparent url(../images/edit\ button.svg) center no-repeat;
+  background: transparent url(../images/edit button.svg) center no-repeat;
   height: 24px;
   width: 24px;
   grid-area: button;
   border: 1px solid #ffffff;
   cursor: pointer;
   align-items: center;
-  gap:10px;
+  gap: 10px;
 }
 .profile__editbutton:hover {
   transition: 0.5s;
