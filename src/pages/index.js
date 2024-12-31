@@ -86,17 +86,16 @@ function handleImageClick(data) {
 cardSection.renderItems();
 
 const newcardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
-  const card = new card({
-    name: cardData.name,link:cardData.link},
+  const card = new Card({
+    name: cardData.title,link:cardData.url},
      (cardData) => {
       cardPreviewImage.open(cardData);
     },
     selectors.cardTemplate
   );
+  cardSection.addItems(card.getView());
   
-  cardSection.addItems(card.generateCard());
   newcardPopup.close();
-   //addFormValidator.disableButton();
 });
 
 newcardPopup.setEventListners();
