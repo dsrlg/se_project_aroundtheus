@@ -29,5 +29,11 @@ export const selectors = {
   cardSection: ".cards__list",
   cardTemplate: "#card-template",
   previewpopup: "#preview-modal",
+  profileEditModal: "#profile-edit-modal",
+  newCardModal:"#card-add-modal",
+  editProfilebutton : "#profile-edit-button",
+  addProfilebutton : "#add-button",
+  profileDescription: "#profile-description-input",
+  profileTitle: "#profile-title-input"
   //check for more constants{inputselector..}
 };

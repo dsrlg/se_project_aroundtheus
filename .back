@@ -15,7 +15,10 @@ const cardAddbutton = document.querySelector(".profile__add-button");
 const cardAddModal = document.querySelector("#card-add-modal");
 const cardAddForm = document.forms["card-form"];
 
+
+
 const previewImageModal = document.querySelector("#preview-modal");
+
 
 const addNewInput = document.querySelector("#profile-input");
 const addNewImage = document.querySelector("#profile-input-url");
@@ -45,7 +48,7 @@ function closeModalEsc(e) {
 }
 
 // function handleImageClick(name, link) {
-
+  
 //   openPopup(previewImageModal);
 // }
 

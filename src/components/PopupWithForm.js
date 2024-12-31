@@ -16,16 +16,17 @@ this._inputList.forEach((input) =>{
 return fromValues;
 }
 
-seteventlistener(){
-  super.seteventlistener();
-  this._popupForm.addEventListner("submit", (e) =>{
-    e.prevenDefault();
-    this._handleFormSubmit=this._getinputvalues()
+setEventListners(){
+  super.setEventListners();
+  this._popupForm.addEventListener("submit", (e) =>{
+    this._handleFormSubmit(this._getinputvalues());
+    this._popupForm.reset();
   });
+ 
 }
 
-  close() {
-    this._popupForm.reset();
-    super.close();
-  }
+  // close() {
+  //   this._popupForm.reset();
+  //   super.close();
+  // }
 }
