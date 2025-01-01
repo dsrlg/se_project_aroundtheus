@@ -68,7 +68,7 @@
   top: 46px;
   right: -47px;
   gap: 0px;
-  opacity: 0px;
+  opacity: 1px;
 }
 .modal__form {
   display: flex;

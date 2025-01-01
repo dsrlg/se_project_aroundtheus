@@ -6,7 +6,7 @@ export default class Section {
   }
 
   addItems(item) {
-    this._container.append(item);
+    this._container.prepend(item);
   }
 
   renderItems() {
@@ -14,14 +14,4 @@ export default class Section {
       this._renderer(item);
     });
   }
-
-  //data.forEach((cardData) => rendercard(cardData, cardsWrap));
-
-  //function rendercard(cardData, wrapper) {
-  //const cardElement = createCard(cardData);
-  //wrapper.prepend(cardElement);
-  // function createCard(item) {
-  //   const card = new Card(item, "#card-template", handleImageClick);
-  //   return card.getView();
-  // }
 }

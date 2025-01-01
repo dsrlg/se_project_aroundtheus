@@ -1,18 +1,18 @@
 import "./index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import { initialCards, selectors } from "../utils/constants.js";
+import { initialCards, selectors ,  formValidationOptions } from "../utils/constants.js";
 import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-import userInfo from "../components/UserInfo.js";
+import UserInfo from "../components/UserInfo.js";
 
 const profileDescription = document.querySelector(selectors.profileDescription);
 const profileTitle = document.querySelector(selectors.profileTitle);
 
 
 // UserInfo
-const userInfoData = new userInfo({
+const UserInfoData = new UserInfo({
   userNameSelector: ".profile__title",
   userDescriptionSelector: ".profile__description",
 });
@@ -22,22 +22,22 @@ cardPreviewImage.setEventListners();
 // const popupWithImage = new PopupWithImage(selectors.previewpopup);
 // popupWithImage.setEventListners();
 
-const userInfoPopup = new PopupWithForm(selectors.profileEditModal, (data) => {
-  userInfoData.setUserInfo({
-    name: data.name,
+const UserInfoPopup = new PopupWithForm(selectors.profileEditModal, (data) => {
+  UserInfoData.setUserInfo({
+    name: data.title,
     description: data.description
   });
-  userInfoPopup.close();
+  UserInfoPopup.close();
 });
-userInfoPopup.setEventListners();
+UserInfoPopup.setEventListners();
 
 document
   .querySelector(selectors.editProfilebutton)
   .addEventListener("click", () => {
-    const currentUserInfo = userInfoData.getUserInfo();
+    const currentUserInfo = UserInfoData.getUserInfo();
     profileTitle.value = currentUserInfo.name;
     profileDescription.value = currentUserInfo.description;
-    userInfoPopup.open();
+    UserInfoPopup.open();
   });
 
 
@@ -50,29 +50,23 @@ const enableValidation = (config) => {
     const formName = formElement.getAttribute("name");
 
     formValidators[formName] = validator;
+    
+    
+    
+    
+    
+    validator._setEventListeners();
     validator.enableValidation();
   });
 };
-const formValidationOptions = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  inputErrorClass: ".modal__error-text-visible",
-  errorClass: ".modal__error",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-};
+
 enableValidation(formValidationOptions);
 
 const cardSection = new Section(
   {
     items: initialCards,
     renderer: (data) => {
-      const cardE1 = new Card(
-        { name: data.name, link: data.link },
-        handleImageClick,
-        selectors.cardTemplate
-      );
-      cardSection.addItems(cardE1.getView());
+      cardSection.addItems(newcard({name:data.name, link: data.link})        );
     },
   },
   selectors.cardSection
@@ -86,18 +80,22 @@ function handleImageClick(data) {
 cardSection.renderItems();
 
 const newcardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
-  const card = new Card({
-    name: cardData.title,link:cardData.url},
-     (cardData) => {
-      cardPreviewImage.open(cardData);
-    },
-    selectors.cardTemplate
-  );
-  cardSection.addItems(card.getView());
+  cardSection.addItems(newcard({name: cardData.title,link:cardData.url}) );
   
   newcardPopup.close();
+  
 });
 
 newcardPopup.setEventListners();
 document.querySelector(selectors.addProfilebutton).addEventListener("click", () => newcardPopup.open());
+
+function newcard({name,link}) {
+  const card = new Card({
+    name: name, link: link
+  },
+    handleImageClick,
+    selectors.cardTemplate
+  );
+  return card.getView();
+}
 

@@ -37,3 +37,11 @@ export const selectors = {
   profileTitle: "#profile-title-input"
   //check for more constants{inputselector..}
 };
+export const formValidationOptions = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  inputErrorClass: ".modal__error-text-visible",
+  errorClass: ".modal__error",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+};
