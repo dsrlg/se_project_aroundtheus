@@ -10,7 +10,6 @@ import UserInfo from "../components/UserInfo.js";
 const profileDescription = document.querySelector(selectors.profileDescription);
 const profileTitle = document.querySelector(selectors.profileTitle);
 
-
 // UserInfo
 const UserInfoData = new UserInfo({
   userNameSelector: ".profile__title",
@@ -40,7 +39,6 @@ document
     UserInfoPopup.open();
   });
 
-
 // define an object for storing validators
 const formValidators = {};
 const enableValidation = (config) => {
@@ -48,13 +46,7 @@ const enableValidation = (config) => {
   formList.forEach((formElement) => {
     const validator = new FormValidator(config, formElement);
     const formName = formElement.getAttribute("name");
-
     formValidators[formName] = validator;
-    
-    
-    
-    
-    
     validator._setEventListeners();
     validator.enableValidation();
   });
@@ -76,14 +68,12 @@ function handleImageClick(data) {
   cardPreviewImage.open(data);
 }
 
-
 cardSection.renderItems();
 
 const newcardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
   cardSection.addItems(newcard({name: cardData.title,link:cardData.url}) );
-  
   newcardPopup.close();
-  
+  formValidators["card-form"].disableButton();
 });
 
 newcardPopup.setEventListners();
