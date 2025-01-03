@@ -59,7 +59,7 @@ const cardSection = new Section(
   {
     items: initialCards,
     renderer: (data) => {
-      cardSection.addItems(createcard({ name: data.name, link: data.link }));
+      cardSection.addItems(createCard({ name: data.name, link: data.link }));
     },
   },
   selectors.cardSection
@@ -72,7 +72,7 @@ function handleImageClick(data) {
 cardSection.renderItems();
 
 const newcardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
-  cardSection.addItems(createcard({ name: cardData.title, link: cardData.url }));
+  cardSection.addItems(createCard({ name: cardData.title, link: cardData.url }));
   newcardPopup.close();
   formValidators["card-form"].disableButton();
 });
@@ -82,7 +82,7 @@ document
   .querySelector(selectors.addProfilebutton)
   .addEventListener("click", () => newcardPopup.open());
 
-function createcard({ name, link }) {
+function createCard({ name, link }) {
   const card = new Card(
     {
       name: name,
