@@ -42,7 +42,6 @@
 .modal__input-container {
   display: flex;
   flex-direction: column;
-  /* gap: 30px;*/
 }
 .modal__close {
   background: transparent url("../images/close.svg") center no-repeat;
@@ -173,6 +172,27 @@
   margin-top: 5px;
   margin-bottom: 13px;
   display: block;
+}
+
+.modal-card-popupdelte{
+  margin: 270px, 425px;
+}
+.modal__heading modal__heading-delete{
+  width: 358px;
+  height: 23px;
+  top: 304px;
+  left: 461px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  background: rgba(0, 0, 0, 1);
+    
 }
 @media (max-width: 621px) {
   .modal__image {
