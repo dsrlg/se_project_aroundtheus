@@ -109,7 +109,7 @@ export default class Api {
       }return Promise.reject(`Error: ${res.status}`);
     })
     .catch((err) => {
-      console.error(err);});
+      console.error('Delete operation failed:',err);});
   }
 
   likeCard(cardId, name, link) {
@@ -147,11 +147,3 @@ export default class Api {
       console.error(err);});
   }
 }
-
-// const api = new Api({
-//   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-//   headers: {
-//     authorization: "1548f535-0046-43dd-937f-ddeda3369119",
-//     "Content-Type": "application/json"
-//   }
-// });

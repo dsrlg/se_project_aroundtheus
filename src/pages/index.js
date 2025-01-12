@@ -2,7 +2,6 @@ import "./index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import {
-  initialCards,
   selectors,
   formValidationOptions,
 } from "../utils/constants.js";
@@ -18,10 +17,23 @@ const api = new Api({
     authToken: "5782927d-9e6f-49bd-bfea-d56552d67f06"
 });
 
-const deletePopup = new PopupConfirm('#modal-card-popupdelte');
-     
+const deletePopup = new PopupConfirm('#modal-card-popupdelte', handleConfirmModal, api);  
+deletePopup.setEventListners(); 
+function handleConfirmModal(id) {
+  console.log("id");
+  console.log(id);
+  api.toDeleteCard(id).then((card) =>{
+    this._cardElement.remove()});
+}
 const profileDescription = document.querySelector(selectors.profileDescription);
 const profileTitle = document.querySelector(selectors.profileTitle);
+
+const cardSection = new Section(
+     (data) => {
+      cardSection.addItems(createCard(data));
+    },
+  selectors.cardSection
+);
 
 // UserInfo
 api.getUserInformation();
@@ -67,58 +79,29 @@ enableValidation(formValidationOptions);
 
 api.getInitialCards()
    .then((initialCards) => {
-     console.log(initialCards);
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: (data) => {
-      cardSection.addItems(createCard({ name: data.name, link: data.link }));
-    },
-  },
-  selectors.cardSection
-);
-cardSection.renderItems();
+    cardSection.renderItems(initialCards);
 })
+.catch((err) => {
+  console.error(err);
+});
 
 function handleImageClick(data) {
   cardPreviewImage.open(data);
 }
 
-function handleConfirmModal(cardData) {
-  deletePopup.setSubmitFunction(() => {
-    api.handleDeleteCard(cardData.id)
-      .then(() => {
-        cardData.element.remove();
-      })
-      .catch((err) => console.error(err));
-  });
-  deletePopup.open();
-}
-
 const newcardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
-  cardSection.addItems(createCard({ name: cardData.title, link: cardData.url,id:cardData.id }));
+  cardSection.addItems(createCard({ name: cardData.title, link: cardData.url}));
   newcardPopup.close();
   formValidators["card-form"].disableButton();
 });
 
-function deletePopupFunction() {
-  this._deleteButton.addEventListener("click", () => {
-    if (this._deletePopup) {
-      this._deletePopup();
-    }
-    this._cardElement.remove();
-  });
-}
-
 function createCard(data) {
-  const card = new Card({
-    name: data.name,
-    link: data.link,
-    id: data.id,
+  const card = new Card(
+    data,
     handleImageClick, 
-    cardSelector: selectors.cardTemplate,
-    deletePopup: deletePopupFunction // Assume deletePopupFunction is defined correctly
-  });
+    selectors.cardTemplate,
+    deletePopup
+  );
   return card.getView();
 }
 
@@ -127,12 +110,4 @@ document
   .querySelector(selectors.addProfilebutton)
   .addEventListener("click", () => newcardPopup.open());
 
-  api.getInitialCards().then((cards) => {
-    cards.forEach((cardData) => {
- createCard(cardData);
-})
-  })
-  .catch((err) => {
-    console.error(err);
-  });
 

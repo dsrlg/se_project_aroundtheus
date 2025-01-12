@@ -22,7 +22,7 @@ export default class Card {
     );
     this._deleteButton.addEventListener("click", () => {
       if (this._deletePopup) {
-        this._deletePopup();
+        this._deletePopup.handleConfirmModal(this._id);
       }
       this._cardElement.remove();
     });
@@ -32,6 +32,7 @@ export default class Card {
       this._handleImageClick({
         name: this._name,
         link: this._link,
+        id: this._id
       });
     });
 
@@ -40,6 +41,7 @@ export default class Card {
     //   this._handle({ name: this._name, link: this._link });
     // });
   }
+
 
   getView() {
     //get the card view
