@@ -1,11 +1,11 @@
 export default class Card {
-  constructor({ name, link, id }, handleImageClick, cardSelector, deletePopup) {
+  constructor({ name, link, id }, handleImageClick, cardSelector,  handleDeleteModal) {
     this._name = name;
     this._link = link;
     this._id = id;
     this._handleImageClick = handleImageClick;
     this._cardSelector = cardSelector;
-    this._deletePopup = deletePopup;
+    this._handleDeleteModal= handleDeleteModal;
   }
 
   _setEventListeners() {
@@ -21,10 +21,8 @@ export default class Card {
       ".card__delete-button"
     );
     this._deleteButton.addEventListener("click", () => {
-      if (this._deletePopup) {
-        this._deletePopup.handleConfirmModal(this._id);
-      }
-      this._cardElement.remove();
+      this._handleDeleteModal({_id : this._id});
+       
     });
 
     // card image
@@ -42,9 +40,12 @@ export default class Card {
     // });
   }
 
+removeCard(){
+  this._cardElement.remove();
+}
 
+ //get the card view
   getView() {
-    //get the card view
     this._cardElement = document
       .querySelector(this._cardSelector)
       .content.querySelector(".card")

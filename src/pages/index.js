@@ -17,14 +17,19 @@ const api = new Api({
     authToken: "5782927d-9e6f-49bd-bfea-d56552d67f06"
 });
 
-const deletePopup = new PopupConfirm('#modal-card-popupdelte', handleConfirmModal, api);  
-deletePopup.setEventListners(); 
-function handleConfirmModal(id) {
-  console.log("id");
-  console.log(id);
-  api.toDeleteCard(id).then((card) =>{
-    this._cardElement.remove()});
+function handleDeleteModal(card){
+  deletePopup.open()
+  deletePopup.setSubmitFunction(() => {
+    api.toDeleteCard(card._id)
+      .then(() => {
+        card.removeCard() // this method needs to be created on the card class
+      });
+  });
 }
+
+const deletePopup = new PopupConfirm('#modal-card-popupdelte');  
+deletePopup.setEventListners(); 
+
 const profileDescription = document.querySelector(selectors.profileDescription);
 const profileTitle = document.querySelector(selectors.profileTitle);
 
@@ -100,7 +105,7 @@ function createCard(data) {
     data,
     handleImageClick, 
     selectors.cardTemplate,
-    deletePopup
+    handleDeleteModal
   );
   return card.getView();
 }
