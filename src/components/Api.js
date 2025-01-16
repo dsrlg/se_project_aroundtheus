@@ -132,7 +132,7 @@ export default class Api {
       console.error(err);});
   }
 
-  disLikeCard(){
+  disLikeCard(cardId){
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: {

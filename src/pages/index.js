@@ -22,9 +22,35 @@ function handleDeleteModal(card){
   deletePopup.setSubmitFunction(() => {
     api.toDeleteCard(card._id)
       .then(() => {
-        card.removeCard() // this method needs to be created on the card class
+        deletePopup.close();
+        card.removeCard()
+        
       });
   });
+}
+
+function handleLikeButton(card, isLiked){
+  if(card.isLiked){
+  api.likeCard(card._id, card.name, card.link)
+  .then((res) =>{
+console.log(res);
+card.isLiked = res.isLiked;
+  })
+  .catch((err) =>{
+    console.error(err)
+  });
+}
+else{
+  api.disLikeCard(card._id)
+  .then((res) =>{
+console.log(res);
+card.isLiked = res.isLiked;
+
+  })
+  .catch((err) =>{
+    console.error(err)
+  });
+}
 }
 
 const deletePopup = new PopupConfirm('#modal-card-popupdelte');  
@@ -41,7 +67,12 @@ const cardSection = new Section(
 );
 
 // UserInfo
-api.getUserInformation();
+api.getUserInformation().then((view)=>{ userInfoData.setUserInfo({
+  name: view.name,
+  description: view.about
+  
+})}
+);
 const userInfoData = new UserInfo({
   userNameSelector: ".profile__title",
   userDescriptionSelector: ".profile__description",
@@ -54,6 +85,7 @@ const userInfoPopup = new PopupWithForm(selectors.profileEditModal, (data) => {
     name: data.title,
     description: data.description,
   });
+  api.editUserInformation(data.title,data.description);
   userInfoPopup.close();
 });
 userInfoPopup.setEventListners();
@@ -95,9 +127,15 @@ function handleImageClick(data) {
 }
 
 const newcardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
-  cardSection.addItems(createCard({ name: cardData.title, link: cardData.url}));
+  api.addNewCards({ name: cardData.title, link: cardData.url}).then((res) =>{
+    console.log(res)
+    cardSection.addItems(createCard({ name: cardData.title, link: cardData.url, _id:cardData._id, isLiked:false}));
   newcardPopup.close();
   formValidators["card-form"].disableButton();
+  })
+  .catch((err) =>{
+    console.error(err);
+  });
 });
 
 function createCard(data) {
@@ -105,7 +143,8 @@ function createCard(data) {
     data,
     handleImageClick, 
     selectors.cardTemplate,
-    handleDeleteModal
+    handleDeleteModal,
+    handleLikeButton  
   );
   return card.getView();
 }
