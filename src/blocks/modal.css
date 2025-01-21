@@ -76,6 +76,22 @@
   border: 0px;
   margin-top: 54px;
 }
+.avatar__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  padding: 20px;
+  gap: 30px;
+}
+.avatar__form input,
+.avatar__form button {
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  /* border: 1px solid #ccc; */
+  border-radius: 4px;
+}
 .modal__input {
   border: 0px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -174,10 +190,10 @@
   display: block;
 }
 
-.modal-card-popupdelte{
+.modal-card-popupdelte {
   margin: 270px, 425px;
 }
-.modal__heading modal__heading-delete{
+.modal__heading modal__heading-delete {
   width: 358px;
   height: 23px;
   top: 304px;
@@ -192,7 +208,6 @@
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   background: rgba(0, 0, 0, 1);
-    
 }
 @media (max-width: 621px) {
   .modal__image {
@@ -241,6 +256,9 @@
   .modal__form {
     margin-top: 44px;
     gap: 45px;
+  }
+  .avatar__form {
+    width: 90%; 
   }
   .modal_closed {
     display: none;

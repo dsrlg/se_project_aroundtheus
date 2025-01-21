@@ -30,11 +30,11 @@
 }
 .profile__button-img {
   position: absolute;
-  top: 50%;
+  top: 70px;
   left: 50%;
   right: 10%;
-  width: 120px;
-  height: 120px;
+  width: 26px;
+  height: 26px;
   background: transparent url(../images/editbutton.svg) center no-repeat;
   border: none;
   opacity: 0;
@@ -42,7 +42,7 @@
   outline: none;
   transform: translate(-50%, -50%);
   transition: opacity 0.3s ease-in-out, transform 0.3s;
-  z-index: -2;
+  z-index: 2;
   border-radius: 2px solid #ffffff;
 }
 .profile__add-button {
@@ -86,8 +86,6 @@
   overflow: hidden;
 }
 .profile__image {
-  /* height: 120px;
-  width: 120px; */
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -109,22 +107,7 @@
 .profile__image:hover + .profile__button-img,
 .profile__button-img:hover {
   opacity: 1;
-  /* transform: translate(0, 0);  */
 }
-/* #avatar-add-button{
- background-image: url(../images/editbutton.svg);
-  width: 26px; 
-  height: 26px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  transform: translate(-50%, -50%);
-  opacity: 1; 
-  transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity */
-/* z-index: 2;
-  border: 2px solid #ffffff;
-  cursor: pointer;
-*/
 @media screen and (max-width: 621px) {
   .profile {
     flex-direction: column;
@@ -170,14 +153,15 @@
 }
 @media (max-width: 768px) {
   .profile__button-img {
-    top: 15px; /* Adjusted position for smaller screens */
+    top: 15px; 
     right: 15px;
   }
 }
-
 @media (max-width: 480px) {
   .profile__button-img {
-    top: 40%; /* Further adjustments for very small screens */
+    top: 40%; 
     right: 10%;
   }
 }
+
+
