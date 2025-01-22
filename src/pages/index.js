@@ -61,10 +61,12 @@ const cardSection = new Section((data) => {
 // UserInfo
 api.getUserInformation().then((view) => {
   userInfoData.setUserInfo({
-    avatar: view.avatar,
     name: view.name,
     description: view.about,
   });
+  userInfoData.setAvatar(
+    view.avatar
+  )
 });
 const userInfoData = new UserInfo({
   userNameSelector: ".profile__title",
@@ -76,10 +78,12 @@ cardPreviewImage.setEventListeners();
 
 const userInfoPopup = new PopupWithForm(selectors.profileEditModal, (data) => {
   userInfoData.setUserInfo({
-    avatar: data.avatar,
     name: data.title,
     description: data.description,
   });
+  userInfoData.setAvatar(
+    data.avatar
+  )
   api.editUserInformation(data.title, data.description);
   userInfoPopup.close();
 });
@@ -128,6 +132,9 @@ const avatarModal = new PopupWithForm("#modal-avatar", (userData) => {
   api
     .updateAvatar(userData.url)
     .then((res) => {
+      userInfoData.setAvatar(
+        res.avatar
+      )
       avatarModal.close();
       formValidators["avatar-form"].disableButton();
     })

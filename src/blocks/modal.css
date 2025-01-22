@@ -81,16 +81,17 @@
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
-  padding: 20px;
+  /* padding: 20px; */
+  margin-left:10px;
   gap: 30px;
 }
 .avatar__form input,
 .avatar__form button {
-  margin: 10px 0;
+  margin: 0;
   padding: 10px;
   width: 100%;
-  /* border: 1px solid #ccc; */
   border-radius: 4px;
+  border: 1px solid #ccc;
 }
 .modal__input {
   border: 0px;

@@ -13,6 +13,7 @@
     " description description";
   column-gap: 20px;
   align-items: baseline;
+  padding-left: 30px;
 }
 .profile__editbutton {
   background: transparent url(../images/editbutton.svg) center no-repeat;
@@ -91,9 +92,9 @@
   border-radius: 50%;
   object-fit: cover;
   background-position: center;
-  margin-right: 24px;
+  /* margin-right: 24px; */
   transition: opacity 0.3s ease-in-out;
-  background: url(../images/Avatar.png);
+  /* background: url(../images/Avatar.png); */
 }
 
 .profile__avatar-container {
