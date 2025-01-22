@@ -1,5 +1,4 @@
 import Popup from "./Popup.js";
-
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super({ popupSelector });
@@ -13,7 +12,7 @@ export default class PopupWithForm extends Popup {
     if(isLoading){
       this._submitButton.textContent = "Saving...";
     } else {
-      this._submitButton.textContent = this._submitButtonTextContent;
+      this._submitButton.textContent = this._defaultButtonText;
     }
   }
   setInputValues(data) {
@@ -30,20 +29,20 @@ export default class PopupWithForm extends Popup {
     return fromValues;
   }
 
-  setEventListners() {
-    super.setEventListners();
+  setEventListeners() {
+    super.setEventListeners();
     this._popupForm.addEventListener("submit", (e) => {
-      e.preventDefault();this.setLoading(true);
+      e.preventDefault();
+      this.setLoading(true);
       this._submitButton.disabled = true;
       const formData = this._getinputvalues();
       setTimeout(() => {
         this._handleFormSubmit(formData);
-
-        this._submitButton.textContent = this._defaultButtontext;
+        this._submitButton.textContent = this._defaultButtonText;
         this._submitButton.disabled = false;
-      }, 3000);
     });
     this._popupForm.reset();
+  }, 3000);
   }
 
   setSubmitAction(handleSubmit) {

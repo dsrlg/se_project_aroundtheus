@@ -49,7 +49,7 @@ function handleLikeButton(card) {
 }
 
 const deletePopup = new PopupConfirm("#modal-card-popupdelte");
-deletePopup.setEventListners();
+deletePopup.setEventListeners();
 
 const profileDescription = document.querySelector(selectors.profileDescription);
 const profileTitle = document.querySelector(selectors.profileTitle);
@@ -69,9 +69,10 @@ api.getUserInformation().then((view) => {
 const userInfoData = new UserInfo({
   userNameSelector: ".profile__title",
   userDescriptionSelector: ".profile__description",
+  avatarSelector:".profile__image"
 });
 const cardPreviewImage = new PopupWithImage(selectors.previewpopup);
-cardPreviewImage.setEventListners();
+cardPreviewImage.setEventListeners();
 
 const userInfoPopup = new PopupWithForm(selectors.profileEditModal, (data) => {
   userInfoData.setUserInfo({
@@ -82,7 +83,7 @@ const userInfoPopup = new PopupWithForm(selectors.profileEditModal, (data) => {
   api.editUserInformation(data.title, data.description);
   userInfoPopup.close();
 });
-userInfoPopup.setEventListners();
+userInfoPopup.setEventListeners();
 
 document
   .querySelector(selectors.editProfilebutton)
@@ -136,7 +137,7 @@ const avatarModal = new PopupWithForm("#modal-avatar", (userData) => {
     .finally(() => avatarModal.setLoading(false));
 });
 
-avatarModal.setEventListners();
+avatarModal.setEventListeners();
 
 document
   .querySelector(".profile__button-img")
@@ -173,7 +174,7 @@ function createCard(data) {
   return card.getView();
 }
 
-newcardPopup.setEventListners();
+newcardPopup.setEventListeners();
 document
   .querySelector(selectors.addProfilebutton)
   .addEventListener("click", () => newcardPopup.open());

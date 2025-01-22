@@ -20,7 +20,7 @@ export default class Popup {
     this._popupElement.classList.remove("modal_opened");
   }
 
-  setEventListners() {
+  setEventListeners() {
     this._popupElement.addEventListener("mousedown", (e) => {
       if (
         e.target.classList.contains("modal") ||
