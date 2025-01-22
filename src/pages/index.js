@@ -28,9 +28,9 @@ function handleLikeButton(card) {
   if (card.isLiked) {
     api
       .likeCard(card._id, card.name, card.link)
-      .then((res) => {
-        console.log(res);
-        card.isLiked = res.isLiked;
+      .then(res => {
+        console.log(res); 
+        card.isLiked = res.isLiked; 
       })
       .catch((err) => {
         console.error(err);
@@ -77,15 +77,17 @@ const cardPreviewImage = new PopupWithImage(selectors.previewpopup);
 cardPreviewImage.setEventListeners();
 
 const userInfoPopup = new PopupWithForm(selectors.profileEditModal, (data) => {
-  userInfoData.setUserInfo({
-    name: data.title,
-    description: data.description,
+  // userInfoData.setAvatar(
+    //   data.avatar
+    // )
+    return api.editUserInformation(data.title, data.description)
+    .then(() => {
+      userInfoPopup.close();
+      userInfoData.setUserInfo({
+        name: data.title,
+        description: data.description,
+      });
   });
-  userInfoData.setAvatar(
-    data.avatar
-  )
-  api.editUserInformation(data.title, data.description);
-  userInfoPopup.close();
 });
 userInfoPopup.setEventListeners();
 
@@ -159,7 +161,7 @@ const newcardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
         createCard({
           name: cardData.title,
           link: cardData.url,
-          _id: cardData._id,
+          _id: res._id,
           isLiked: false,
         })
       );

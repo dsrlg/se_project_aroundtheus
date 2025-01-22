@@ -38,7 +38,7 @@ export default class Api {
   }
 
   editUserInformation(name, about){
-    fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json", 
@@ -84,15 +84,17 @@ export default class Api {
       body: JSON.stringify({
         name,
         link,
-      }),
+      })
     })
       .then(res => {
         if (res.ok) {
           return res.json();
-        }return Promise.reject(`Error: ${res.status}`);
+        }
+        return Promise.reject(`Error: ${res.status}`);
       })
       .catch((err) => {
-        console.error(err);});
+        console.error(err);
+      });
   }
   
   toDeleteCard(cardId){
@@ -114,14 +116,13 @@ export default class Api {
       console.error('Delete operation failed:',err);});
   }
 
-  likeCard(cardId, name, link) {
+  likeCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: {
         authorization: this._authToken,
          "Content-Type": "application/json"
-      },
-      body:JSON.stringify({name,link}),
+      }
     })
     .then(res => {
       if (res.ok) {
@@ -129,7 +130,8 @@ export default class Api {
       }return Promise.reject(`Error: ${res.status}`);
     })
     .catch((err) => {
-      console.error(err);});
+      console.error(err);
+    });
   }
 
   disLikeCard(cardId){
