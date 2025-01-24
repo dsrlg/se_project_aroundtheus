@@ -9,7 +9,7 @@ export default class Api {
       method: "GET",
       headers: this._headers,
     }).then((res) => {
-      return this._checkResponse(res);
+      return this.checkResponse(res);
     });
   }
 
@@ -24,7 +24,7 @@ export default class Api {
       method: "GET",
       headers: this._headers,
     }).then((res) => {
-      return this._checkResponse(res);
+      return this.checkResponse(res);
     });
   }
 
@@ -37,7 +37,7 @@ export default class Api {
         about: about,
       }),
     }).then((res) => {
-      return checkResponse(res);
+      return this.checkResponse(res);
     });
   }
 
@@ -47,7 +47,7 @@ export default class Api {
       headers: this._headers,
       body: JSON.stringify({ avatar: newAvatar }),
     }).then((res) => {
-      return checkResponse(res);
+      return this.checkResponse(res);
     });
   }
 
@@ -60,7 +60,7 @@ export default class Api {
         link,
       }),
     }).then((res) => {
-      return checkResponse(res);
+      return this.checkResponse(res);
     });
   }
 
@@ -69,7 +69,7 @@ export default class Api {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => {
-      return this._checkResponse(res);
+      return this.checkResponse(res);
     });
   }
 
@@ -78,7 +78,7 @@ export default class Api {
       method: "PUT",
       headers: this._headers,
     }).then((res) => {
-      return this._checkResponse(res);
+      return this.checkResponse(res);
     });
   }
 
@@ -87,7 +87,7 @@ export default class Api {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => {
-      return this._checkResponse(res);
+      return this.checkResponse(res);
     });
   }
 }
