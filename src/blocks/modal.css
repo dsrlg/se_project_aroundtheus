@@ -87,7 +87,7 @@
 }
 .avatar__form button, .avatar__form input {
    margin: 0px;
-  padding: 10px;  
+  /* padding: 10px;   */
   border-radius: 4px;  
 }
 .avatar__heading{
@@ -218,7 +218,7 @@
     top: 136px;
     left: 40px;
     gap: 0px;
-    opacity: 0px;
+    /* opacity: 0px; */
     margin-right: 40px;
     margin-left: 40px;
   }

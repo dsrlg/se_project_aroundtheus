@@ -40,7 +40,7 @@ export default class PopupWithForm extends Popup {
       await this._handleFormSubmit(formData);
       this._submitButton.textContent = this._defaultButtonText;
       this._submitButton.disabled = false;
-      //});
+      //} 3000);
       this._popupForm.reset();
     });
   }

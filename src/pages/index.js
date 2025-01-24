@@ -11,19 +11,22 @@ import Api from "../components/Api.js";
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers : {
-  authorization: "5782927d-9e6f-49bd-bfea-d56552d67f06",
-  "Content-Type": "application/json"
-}
+  headers: {
+    authorization: "5782927d-9e6f-49bd-bfea-d56552d67f06",
+    "Content-Type": "application/json",
+  },
 });
 
 function handleDeleteModal(card) {
   deletePopup.open();
   deletePopup.setSubmitFunction(() => {
-    api.toDeleteCard(card._id).then(() => {
-      deletePopup.close();
-      card.removeCard();
-    }).catch((err) => {
+    api
+      .toDeleteCard(card._id)
+      .then(() => {
+        deletePopup.close();
+        card.removeCard();
+      })
+      .catch((err) => {
         console.error(err);
       });
   });
@@ -33,9 +36,9 @@ function handleLikeButton(card) {
   if (card.isLiked) {
     api
       .likeCard(card._id, card.name, card.link)
-      .then(res => {
-        console.log(res); 
-        card.isLiked = res.isLiked; 
+      .then((res) => {
+        console.log(res);
+        card.setLiked(res.isLiked);
       })
       .catch((err) => {
         console.error(err);
@@ -44,8 +47,8 @@ function handleLikeButton(card) {
     api
       .disLikeCard(card._id)
       .then((res) => {
-        card.isLiked = res.isLiked;
-       })
+        card.setLiked(res.isLiked);
+      })
       .catch((err) => {
         console.error(err);
       });
@@ -68,31 +71,28 @@ api.getUserInformation().then((view) => {
     name: view.name,
     description: view.about,
   });
-  userInfoData.setAvatar(
-    view.avatar
-  )
+  userInfoData.setAvatar(view.avatar);
 });
 const userInfoData = new UserInfo({
   userNameSelector: ".profile__title",
   userDescriptionSelector: ".profile__description",
-  avatarSelector:".profile__image"
+  avatarSelector: ".profile__image",
 });
 const cardPreviewImage = new PopupWithImage(selectors.previewpopup);
 cardPreviewImage.setEventListeners();
 
 const userInfoPopup = new PopupWithForm(selectors.profileEditModal, (data) => {
-  // userInfoData.setAvatar(
-    //   data.avatar
-    // )
-    return api.editUserInformation(data.title, data.description)
+  return api
+    .editUserInformation(data.title, data.description)
     .then(() => {
       userInfoPopup.close();
       userInfoData.setUserInfo({
         name: data.title,
         description: data.description,
-      })
-      .catch((error) => console.error("Request failed", error));
-  });
+      });
+    })
+    .catch((error) => console.error("Request failed", error))
+    .finally(() => userInfoPopup.setLoading(false));
 });
 userInfoPopup.setEventListeners();
 
@@ -139,9 +139,7 @@ const avatarModal = new PopupWithForm("#modal-avatar", (userData) => {
   api
     .updateAvatar(userData.url)
     .then((res) => {
-      userInfoData.setAvatar(
-        res.avatar
-      )
+      userInfoData.setAvatar(res.avatar);
       avatarModal.close();
       formValidators["avatar-form"].disableButton();
     })
@@ -158,6 +156,7 @@ document
   .addEventListener("click", () => avatarModal.open());
 
 const newcardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
+  newcardPopup.setLoading(true);
   api
     .addNewCards({ name: cardData.title, link: cardData.url })
     .then((res) => {
@@ -174,7 +173,8 @@ const newcardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
     })
     .catch((err) => {
       console.error(err);
-    });//.finally(()=>newcardPopup.setLoading(false));
+    })
+    .finally(() => newcardPopup.setLoading(false));
 });
 function createCard(data) {
   const card = new Card(

@@ -26,7 +26,7 @@ export default class Card {
       this.isLiked = !this.isLiked;
 
       this._handleLikeButton(this, this.isLiked);
-      this.getLiked();
+      //this.getLiked();
     });
 
     // delete button
@@ -45,11 +45,6 @@ export default class Card {
         id: this._id,
       });
     });
-
-    // delete confirm
-    //  this._handleConfirmModal.addEventListener("click", () => {
-    //   this._handle({ name: this._name, link: this._link });
-    // });
   }
 
   removeCard() {
@@ -81,7 +76,7 @@ export default class Card {
       this._likeButton.classList.remove("card__like-button_active");
     }
   }
-  setliked(isLiked) {
+  setLiked(isLiked) {
     this.isLiked = isLiked;
     this.getLiked();
   }
