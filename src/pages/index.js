@@ -11,7 +11,10 @@ import Api from "../components/Api.js";
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  authToken: "5782927d-9e6f-49bd-bfea-d56552d67f06",
+  headers : {
+  authorization: "5782927d-9e6f-49bd-bfea-d56552d67f06",
+  "Content-Type": "application/json"
+}
 });
 
 function handleDeleteModal(card) {
@@ -20,7 +23,9 @@ function handleDeleteModal(card) {
     api.toDeleteCard(card._id).then(() => {
       deletePopup.close();
       card.removeCard();
-    });
+    }).catch((err) => {
+        console.error(err);
+      });
   });
 }
 
@@ -39,9 +44,8 @@ function handleLikeButton(card) {
     api
       .disLikeCard(card._id)
       .then((res) => {
-        console.log(res);
         card.isLiked = res.isLiked;
-      })
+       })
       .catch((err) => {
         console.error(err);
       });
@@ -86,7 +90,8 @@ const userInfoPopup = new PopupWithForm(selectors.profileEditModal, (data) => {
       userInfoData.setUserInfo({
         name: data.title,
         description: data.description,
-      });
+      })
+      .catch((error) => console.error("Request failed", error));
   });
 });
 userInfoPopup.setEventListeners();
@@ -156,7 +161,6 @@ const newcardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
   api
     .addNewCards({ name: cardData.title, link: cardData.url })
     .then((res) => {
-      console.log(res);
       cardSection.addItems(
         createCard({
           name: cardData.title,
@@ -170,7 +174,7 @@ const newcardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
     })
     .catch((err) => {
       console.error(err);
-    });
+    });//.finally(()=>newcardPopup.setLoading(false));
 });
 function createCard(data) {
   const card = new Card(
