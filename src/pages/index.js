@@ -108,32 +108,9 @@ function handleProfileSubmit({ title, description }) {
     });
 }
 
-const cardSubmmitButton = document.querySelector(
-  selectors.cardSubmitButton
-);
-function cardProfileSubmit({ name, link }) {
-
-cardSubmmitButton.textContent = "Saving...";
-  api
-    .addNewCards(name, link)
-    .then((data) => {
-      userInfoPopup.close();
-      userInfoData.setUserInfo({
-        name: data.name,
-        link: data.link,
-      });
-    })
-    .catch((error) => console.error("Request failed", error))
-    .finally(() => {
-      // userInfoPopup.setLoading(false);
-      cardSubmmitButton.textContent = "Save";
-    });
-}
-
 const userInfoPopup = new PopupWithForm( 
   selectors.profileEditModal,
-  handleProfileSubmit,
-  cardProfileSubmit
+  handleProfileSubmit
 );
 userInfoPopup.setEventListeners();
 
@@ -197,6 +174,10 @@ document
   .addEventListener("click", () => avatarModal.open());
 
 const newCardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
+  const cardSubmmitButton = document.querySelector(
+    selectors.cardSubmitButton
+  );
+    cardSubmmitButton.textContent = "Saving...";
   newCardPopup.setLoading(true);
   api
     .addNewCards({ name: cardData.title, link: cardData.url })
@@ -215,8 +196,11 @@ const newCardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
     .catch((err) => {
       console.error(err);
     })
-    .finally(() => newCardPopup.setLoading(false));
+    .finally(() => {
+       cardSubmmitButton.textContent = "Save";
+      });
 });
+
 function createCard(data) {
   const card = new Card(
     data,

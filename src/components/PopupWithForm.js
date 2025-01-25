@@ -32,15 +32,16 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    this._popupForm.addEventListener("submit", async (e) => {
+    this._popupForm.addEventListener("submit",  (e) => {
       e.preventDefault();
       this.setLoading(true);
       this._submitButton.disabled = true;
       const formData = this._getinputvalues();
       //setTimeout(() => {
-      await this._handleFormSubmit(formData);
-       this._submitButton.textContent = this._defaultButtonText;
-       this._submitButton.disabled = false;
+       this._handleFormSubmit(formData);
+      //  this._cardFormSubmit(formData);
+      //  this._submitButton.textContent = this._defaultButtonText;
+      //  this._submitButton.disabled = false;
       //} 3000);
       this._popupForm.reset();
     });
