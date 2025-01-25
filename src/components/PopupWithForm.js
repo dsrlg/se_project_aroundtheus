@@ -1,19 +1,20 @@
 import Popup from "./Popup.js";
 export default class PopupWithForm extends Popup {
-  constructor(popupSelector, handleFormSubmit) {
+  constructor(popupSelector, handleFormSubmit, cardFormSubmit) {
     super({ popupSelector });
     this._popupForm = this._popupElement.querySelector(".modal__form");
     this._inputList = this._popupForm.querySelectorAll(".modal__input");
     this._handleFormSubmit = handleFormSubmit;
+    this._cardFormSubmit= cardFormSubmit;
     this._submitButton = this._popupElement.querySelector(".modal__button");
     this._defaultButtonText = this._submitButton.textContent;
   }
   setLoading(isLoading) {
-    if (isLoading) {
-      this._submitButton.textContent = "Saving...";
-    } else {
-      this._submitButton.textContent = this._defaultButtonText;
-    }
+    // if (isLoading) {
+    //   this._submitButton.textContent = "Saving...";
+    // } else {
+    //   this._submitButton.textContent = this._defaultButtonText;
+    // }
   }
   setInputValues(data) {
     this._inputList.forEach((input) => {
@@ -38,19 +39,19 @@ export default class PopupWithForm extends Popup {
       const formData = this._getinputvalues();
       //setTimeout(() => {
       await this._handleFormSubmit(formData);
-      this._submitButton.textContent = this._defaultButtonText;
-      this._submitButton.disabled = false;
+       this._submitButton.textContent = this._defaultButtonText;
+       this._submitButton.disabled = false;
       //} 3000);
       this._popupForm.reset();
     });
   }
 
-  setSubmitAction(handleSubmit) {
+  setSubmitAction(handleSubmit, cardSubmit) {
     this._handleFormSubmit = handleSubmit;
+    this._cardFormSubmit= cardSubmit;
   }
 
   getForm() {
     return this._popupForm;
   }
-  
 }

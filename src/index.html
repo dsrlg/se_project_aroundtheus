@@ -39,23 +39,28 @@
                   id="avatar-add-button"
                   title="add avatar"
                 ></button>
-                <h4 class="modal__heading avatar__heading">Change profile picture</h4>
+                <h4 class="modal__heading avatar__heading">
+                  Change profile picture
+                </h4>
                 <form class="modal__form avatar__form" name="avatar-form">
                   <input
                     type="url"
                     name="url"
                     id="avatar-picture"
-                    class="modal__input avatar__form input"
+                    class="modal__input"
                     placeholder="Avatar URL"
                     required
                   />
                   <span
-                    class="modal__error"
+                    class="modal__error modal__error-text-visible"
                     id="avatar-picture-error"
                   ></span>
-                  <button class="modal__button modal__button_disabled" type="submit">
-                   Save
-                    </button>
+                  <button
+                    class="modal__button modal__button_disabled"
+                    type="submit"
+                  >
+                    Save
+                  </button>
                 </form>
               </div>
             </div>
@@ -120,7 +125,7 @@
               id="profile-description-input-error"
             ></span>
           </div>
-          <button class="modal__button">Save</button>
+          <button class="modal__button" id="profile-edit-submit">Save</button>
         </form>
       </div>
     </div>
@@ -158,7 +163,7 @@
               id="profile-input-url-error"
             ></span>
           </div>
-          <button class="modal__button modal__button_disabled">Save</button>
+          <button class="modal__button modal__button_disabled" id="profile-add-submit">Save</button>
         </form>
       </div>
     </div>

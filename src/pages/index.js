@@ -38,7 +38,7 @@ function handleLikeButton(card) {
       .likeCard(card._id, card.name, card.link)
       .then((res) => {
         console.log(res);
-        card.setLiked(res.isLiked);
+        card.setLiked(!res.isLiked);
       })
       .catch((err) => {
         console.error(err);
@@ -66,13 +66,18 @@ const cardSection = new Section((data) => {
 }, selectors.cardSection);
 
 // UserInfo
-api.getUserInformation().then((view) => {
-  userInfoData.setUserInfo({
-    name: view.name,
-    description: view.about,
+api
+  .getUserInformation()
+  .then((view) => {
+    userInfoData.setUserInfo({
+      name: view.name,
+      description: view.about,
+    });
+    userInfoData.setAvatar(view.avatar);
+  })
+  .catch((err) => {
+    console.error(err);
   });
-  userInfoData.setAvatar(view.avatar);
-});
 const userInfoData = new UserInfo({
   userNameSelector: ".profile__title",
   userDescriptionSelector: ".profile__description",
@@ -81,19 +86,55 @@ const userInfoData = new UserInfo({
 const cardPreviewImage = new PopupWithImage(selectors.previewpopup);
 cardPreviewImage.setEventListeners();
 
-const userInfoPopup = new PopupWithForm(selectors.profileEditModal, (data) => {
-  return api
-    .editUserInformation(data.title, data.description)
-    .then(() => {
+const profileSubmmitButton = document.querySelector(
+  selectors.profileSubmitButton
+);
+function handleProfileSubmit({ title, description }) {
+
+  profileSubmmitButton.textContent = "Saving...";
+  api
+    .editUserInformation(title, description)
+    .then((data) => {
       userInfoPopup.close();
       userInfoData.setUserInfo({
-        name: data.title,
-        description: data.description,
+        name: data.name,
+        description: data.about,
       });
     })
     .catch((error) => console.error("Request failed", error))
-    .finally(() => userInfoPopup.setLoading(false));
-});
+    .finally(() => {
+      //userInfoPopup.setLoading(false);
+      profileSubmmitButton.textContent = "Save";
+    });
+}
+
+const cardSubmmitButton = document.querySelector(
+  selectors.cardSubmitButton
+);
+function cardProfileSubmit({ name, link }) {
+
+cardSubmmitButton.textContent = "Saving...";
+  api
+    .addNewCards(name, link)
+    .then((data) => {
+      userInfoPopup.close();
+      userInfoData.setUserInfo({
+        name: data.name,
+        link: data.link,
+      });
+    })
+    .catch((error) => console.error("Request failed", error))
+    .finally(() => {
+      // userInfoPopup.setLoading(false);
+      cardSubmmitButton.textContent = "Save";
+    });
+}
+
+const userInfoPopup = new PopupWithForm( 
+  selectors.profileEditModal,
+  handleProfileSubmit,
+  cardProfileSubmit
+);
 userInfoPopup.setEventListeners();
 
 document
@@ -155,8 +196,8 @@ document
   .querySelector(".profile__button-img")
   .addEventListener("click", () => avatarModal.open());
 
-const newcardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
-  newcardPopup.setLoading(true);
+const newCardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
+  newCardPopup.setLoading(true);
   api
     .addNewCards({ name: cardData.title, link: cardData.url })
     .then((res) => {
@@ -168,13 +209,13 @@ const newcardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
           isLiked: false,
         })
       );
-      newcardPopup.close();
+      newCardPopup.close();
       formValidators["card-form"].disableButton();
     })
     .catch((err) => {
       console.error(err);
     })
-    .finally(() => newcardPopup.setLoading(false));
+    .finally(() => newCardPopup.setLoading(false));
 });
 function createCard(data) {
   const card = new Card(
@@ -187,7 +228,7 @@ function createCard(data) {
   return card.getView();
 }
 
-newcardPopup.setEventListeners();
+newCardPopup.setEventListeners();
 document
   .querySelector(selectors.addProfilebutton)
-  .addEventListener("click", () => newcardPopup.open());
+  .addEventListener("click", () => newCardPopup.open());

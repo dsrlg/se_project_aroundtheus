@@ -23,7 +23,7 @@ export default class Card {
     this.getLiked();
 
     this._likeButton.addEventListener("click", () => {
-      this.isLiked = !this.isLiked;
+     
 
       this._handleLikeButton(this, this.isLiked);
       //this.getLiked();
