@@ -86,14 +86,12 @@ const userInfoData = new UserInfo({
 const cardPreviewImage = new PopupWithImage(selectors.previewpopup);
 cardPreviewImage.setEventListeners();
 
-const profileSubmmitButton = document.querySelector(
-  selectors.profileSubmitButton
-);
 function handleProfileSubmit({ title, description }) {
-  profileSubmmitButton.textContent = "Saving...";
+  userInfoPopup.renderLoading(true);
   api
     .editUserInformation(title, description)
     .then((data) => {
+      userInfoPopup.resetForm();
       userInfoPopup.close();
       userInfoData.setUserInfo({
         name: data.name,
@@ -102,8 +100,7 @@ function handleProfileSubmit({ title, description }) {
     })
     .catch((error) => console.error("Request failed", error))
     .finally(() => {
-      //userInfoPopup.setLoading(false);
-      profileSubmmitButton.textContent = "Save";
+      userInfoPopup.renderLoading(false, "Save");
     });
 }
 
@@ -152,15 +149,12 @@ function handleImageClick(data) {
 
 //update avatar
 const avatarModal = new PopupWithForm("#modal-avatar", (userData) => {
-  const avatarSubmitButton = document.querySelector(
-    selectors.avatarSubmitButton
-  );
-  avatarSubmitButton.textContent = "Saving... ";
-  avatarModal.setLoading(true);
+  avatarModal.renderLoading(true, "Saving...");
   api
     .updateAvatar(userData.url)
     .then((res) => {
       userInfoData.setAvatar(res.avatar);
+      avatarModal.resetForm();
       avatarModal.close();
       formValidators["avatar-form"].disableButton();
     })
@@ -168,8 +162,7 @@ const avatarModal = new PopupWithForm("#modal-avatar", (userData) => {
       console.error(err);
     })
     .finally(() => {
-      avatarModal.setLoading(false);
-      avatarSubmitButton.textContent = "Save";
+      avatarModal.renderLoading(false, "Save");
     });
 });
 
@@ -180,9 +173,7 @@ document
   .addEventListener("click", () => avatarModal.open());
 
 const newCardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
-  const cardSubmmitButton = document.querySelector(selectors.cardSubmitButton);
-  cardSubmmitButton.textContent = "Saving...";
-  newCardPopup.setLoading(true);
+  newCardPopup.renderLoading(true);
   api
     .addNewCards({ name: cardData.title, link: cardData.url })
     .then((res) => {
@@ -194,6 +185,7 @@ const newCardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
           isLiked: false,
         })
       );
+      newCardPopup.resetForm();
       newCardPopup.close();
       formValidators["card-form"].disableButton();
     })
@@ -201,7 +193,7 @@ const newCardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
       console.error(err);
     })
     .finally(() => {
-      cardSubmmitButton.textContent = "Save";
+      newCardPopup.renderLoading(false, "Save");
     });
 });
 

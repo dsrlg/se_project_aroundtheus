@@ -21,7 +21,7 @@ export default class Card {
     this._likeButton = this._cardElement.querySelector(".card__like-button");
     this.getLiked();
     this._likeButton.addEventListener("click", () => {
-      this._handleLikeButton(this, this.getLiked());      
+      this._handleLikeButton(this, this.isLiked);      
 //      this.getLiked();
     });
 
