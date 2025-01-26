@@ -43,7 +43,8 @@
   cursor: pointer;
 }
 .card__like-button_active {
-  background: url("../images/likeactive.svg");
+  background: url("../images/like.svg") center no-repeat;
+  background-size: cover;
 }
 .card__like-button:hover {
   opacity: 0.5;

@@ -1,40 +1,16 @@
-export const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-  },
-];
-
 export const selectors = {
   cardSection: ".cards__list",
   cardTemplate: "#card-template",
   previewpopup: "#preview-modal",
   profileEditModal: "#profile-edit-modal",
-  newCardModal:"#card-add-modal",
-  editProfilebutton : "#profile-edit-button",
-  addProfilebutton : "#add-button",
+  newCardModal: "#card-add-modal",
+  editProfilebutton: "#profile-edit-button",
+  addProfilebutton: "#add-button",
   profileDescription: "#profile-description-input",
-  profileTitle: "#profile-title-input"
+  profileTitle: "#profile-title-input",
+  profileSubmitButton: "#profile-edit-submit",
+  cardSubmitButton:"#profile-add-submit",
+  avatarSubmitButton: "#avatar-submit-button",
   //check for more constants{inputselector..}
 };
 export const formValidationOptions = {

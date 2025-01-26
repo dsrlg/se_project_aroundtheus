@@ -42,7 +42,6 @@
 .modal__input-container {
   display: flex;
   flex-direction: column;
-  /* gap: 30px;*/
 }
 .modal__close {
   background: transparent url("../images/close.svg") center no-repeat;
@@ -73,9 +72,26 @@
 .modal__form {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 48px; 
   border: 0px;
   margin-top: 54px;
+}
+.avatar__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-top: 30px;
+   padding: 20px;  */
+   margin-top: 0px;
+    gap:20px; 
+}
+.avatar__form button, .avatar__form input {
+   margin: 0px;
+  /* padding: 10px;   */
+  border-radius: 4px;  
+}
+.avatar__heading{
+  margin-bottom: 54px;
 }
 .modal__input {
   border: 0px;
@@ -174,6 +190,26 @@
   margin-bottom: 13px;
   display: block;
 }
+
+.modal-card-popupdelte {
+  margin: 270px, 425px;
+}
+.modal__heading modal__heading-delete {
+  width: 358px;
+  height: 23px;
+  top: 304px;
+  left: 461px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  background: rgba(0, 0, 0, 1);
+}
 @media (max-width: 621px) {
   .modal__image {
     gap: 0px;
@@ -182,7 +218,7 @@
     top: 136px;
     left: 40px;
     gap: 0px;
-    opacity: 0px;
+    /* opacity: 0px; */
     margin-right: 40px;
     margin-left: 40px;
   }
@@ -203,7 +239,7 @@
     text-align: left;
     padding-bottom: 13px;
   }
-  .modal__button {
+  .modal__button{
     text-align: center;
     font-size: 14px;
     height: 46px;
@@ -220,7 +256,10 @@
   }
   .modal__form {
     margin-top: 44px;
-    gap: 45px;
+    /* gap: 45px; */
+  }
+  .avatar__form {
+    width: 100%; 
   }
   .modal_closed {
     display: none;

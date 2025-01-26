@@ -23,11 +23,49 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/jacques-cousteau.png')%>"
-            alt="Avatar"
-            class="profile__image"
-          />
+          <div class="profile__avatar-container">
+            <img src="" alt=" " class="profile__image" />
+            <button
+              type="button"
+              aria-label="Change Profile Image"
+              class="profile__button-img"
+              id="avatar-add-button"
+            ></button>
+            <div class="modal" id="modal-avatar">
+              <div class="modal__container">
+                <button
+                  class="modal__close"
+                  type="button"
+                  id="avatar-add-button"
+                  title="add avatar"
+                ></button>
+                <h4 class="modal__heading avatar__heading">
+                  Change profile picture
+                </h4>
+                <form class="modal__form avatar__form" name="avatar-form">
+                  <input
+                    type="url"
+                    name="url"
+                    id="avatar-picture"
+                    class="modal__input"
+                    placeholder="Avatar URL"
+                    required
+                  />
+                  <span
+                    class="modal__error modal__error-text-visible"
+                    id="avatar-picture-error"
+                  ></span>
+                  <button
+                    class="modal__button modal__button_disabled"
+                    type="submit"
+                    id="avatar-submit-button"
+                  >
+                    Save
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -51,6 +89,7 @@
         <p class="footer__description">© 2022 Around The U.S.</p>
       </footer>
     </div>
+
     <!--edit modal-->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
@@ -87,7 +126,7 @@
               id="profile-description-input-error"
             ></span>
           </div>
-          <button class="modal__button">Save</button>
+          <button class="modal__button" id="profile-edit-submit">Save</button>
         </form>
       </div>
     </div>
@@ -125,7 +164,12 @@
               id="profile-input-url-error"
             ></span>
           </div>
-          <button class="modal__button modal__button_disabled">Save</button>
+          <button
+            class="modal__button modal__button_disabled"
+            id="profile-add-submit"
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -150,5 +194,15 @@
         </div>
       </li>
     </template>
+
+    <div class="modal" id="modal-card-popupdelte">
+      <div class="modal__container">
+        <button type="button" class="modal__close"></button>
+        <h3 class="modal__heading modal__heading-delete">Are you sure?</h3>
+        <form class="modal__form" id="delete-card-form">
+          <button type="submit" class="button modal__button">Yes</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
