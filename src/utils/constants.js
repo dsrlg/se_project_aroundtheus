@@ -10,6 +10,7 @@ export const selectors = {
   profileTitle: "#profile-title-input",
   profileSubmitButton: "#profile-edit-submit",
   cardSubmitButton:"#profile-add-submit",
+  avatarSubmitButton: "#avatar-submit-button",
   //check for more constants{inputselector..}
 };
 export const formValidationOptions = {

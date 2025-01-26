@@ -33,19 +33,19 @@ function handleDeleteModal(card) {
 }
 
 function handleLikeButton(card) {
-  if (card.isLiked) {
+  if (!card.isLiked) {
     api
       .likeCard(card._id, card.name, card.link)
       .then((res) => {
         console.log(res);
-        card.setLiked(!res.isLiked);
+        card.setLiked(res.isLiked);
       })
       .catch((err) => {
         console.error(err);
       });
   } else {
     api
-      .disLikeCard(card._id)
+      .disLikeCard(card._id, card.name, card.link)
       .then((res) => {
         card.setLiked(res.isLiked);
       })
@@ -90,7 +90,6 @@ const profileSubmmitButton = document.querySelector(
   selectors.profileSubmitButton
 );
 function handleProfileSubmit({ title, description }) {
-
   profileSubmmitButton.textContent = "Saving...";
   api
     .editUserInformation(title, description)
@@ -108,7 +107,7 @@ function handleProfileSubmit({ title, description }) {
     });
 }
 
-const userInfoPopup = new PopupWithForm( 
+const userInfoPopup = new PopupWithForm(
   selectors.profileEditModal,
   handleProfileSubmit
 );
@@ -153,6 +152,10 @@ function handleImageClick(data) {
 
 //update avatar
 const avatarModal = new PopupWithForm("#modal-avatar", (userData) => {
+  const avatarSubmitButton = document.querySelector(
+    selectors.avatarSubmitButton
+  );
+  avatarSubmitButton.textContent = "Saving... ";
   avatarModal.setLoading(true);
   api
     .updateAvatar(userData.url)
@@ -164,7 +167,10 @@ const avatarModal = new PopupWithForm("#modal-avatar", (userData) => {
     .catch((err) => {
       console.error(err);
     })
-    .finally(() => avatarModal.setLoading(false));
+    .finally(() => {
+      avatarModal.setLoading(false);
+      avatarSubmitButton.textContent = "Save";
+    });
 });
 
 avatarModal.setEventListeners();
@@ -174,10 +180,8 @@ document
   .addEventListener("click", () => avatarModal.open());
 
 const newCardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
-  const cardSubmmitButton = document.querySelector(
-    selectors.cardSubmitButton
-  );
-    cardSubmmitButton.textContent = "Saving...";
+  const cardSubmmitButton = document.querySelector(selectors.cardSubmitButton);
+  cardSubmmitButton.textContent = "Saving...";
   newCardPopup.setLoading(true);
   api
     .addNewCards({ name: cardData.title, link: cardData.url })
@@ -197,8 +201,8 @@ const newCardPopup = new PopupWithForm(selectors.newCardModal, (cardData) => {
       console.error(err);
     })
     .finally(() => {
-       cardSubmmitButton.textContent = "Save";
-      });
+      cardSubmmitButton.textContent = "Save";
+    });
 });
 
 function createCard(data) {
